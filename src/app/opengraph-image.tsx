@@ -4,7 +4,7 @@ import { ImageResponse } from 'next/og';
 import tokens from '../../design-system/tokens.json';
 import { contact } from '@/content/site';
 
-// Anteprima social 1200×630: orizzonte con griglia, wordmark bianco e testi solo nella metà alta (sopra i 315px).
+// Anteprima social 1200×630: orizzonte con griglia, wordmark e testi bianchi.
 export const alt = 'Alpwise Studio · Software su misura per le PMI, a Gallarate';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';

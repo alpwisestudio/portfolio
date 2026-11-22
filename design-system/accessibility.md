@@ -24,7 +24,7 @@ Obiettivo: WCAG 2.2 AA in entrambi i temi, orizzonte compreso.
 ## Testo sull'orizzonte
 
 - Misurato sul pixel più chiaro sotto ogni riga della hero (960px): titolo ≥ 8.3:1, lead ≥ 6.0:1 (bianco all'86%: ≥ 5:1).
-- Sotto il 75% dell'altezza il fondo diventa azzurro e poi bianco: lì solo testo nero (le etichette mono della fascia bassa, ≥ 15:1).
+- Il fondo più chiaro è `sky-700`, sul bordo inferiore: il testo bianco passa a ogni altezza (≥ 5.8:1). Niente testo nero sull'orizzonte.
 - I bottoni sull'orizzonte hanno sempre un fondo pieno (`primary`, `light`, `dark`), mai solo il bordo.
 
 ## Focus e tastiera

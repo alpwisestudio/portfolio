@@ -32,9 +32,9 @@ Alpwise Studio è uno studio digitale di tre sviluppatori a Gallarate, ai piedi 
 .al-grid::before  { /* 12 colonne hairline, sfumano verso il basso */ }
 ```
 
-- `horizon` sale dal nero al blu notte, all'azzurro, al bianco. Solo il gradiente lineare: niente arco, cerchi o bagliori radiali sopra.
+- `horizon` sale dal nero al blu notte fino all'azzurro di marca (`sky-700`), senza fascia bianca. Solo il gradiente lineare: niente arco, cerchi o bagliori radiali sopra.
 - È identico in Scuro e in Chiaro: è la firma del marchio, non un colore d'interfaccia.
-- Il testo bianco sta solo nella metà alta (≥ 6:1 misurato sotto il lead della hero). Nella fascia chiara in basso solo etichette mono nere.
+- Il testo è sempre bianco, a ogni altezza: il punto più chiaro è `sky-700` in fondo (5.8:1). Mai testo nero sull'orizzonte.
 - Si usa in tre posti: hero, CTA finale, visual dei case study. Mai su card, bottoni o fondi di sezione interi.
 
 ## Tipografia

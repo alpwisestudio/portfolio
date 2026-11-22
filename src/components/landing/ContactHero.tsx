@@ -1,7 +1,7 @@
 import { Columns, Scene, Scramble, Words } from '@/components/motion';
 import { d } from '@/components/motion/delay';
 
-/** Apertura della pagina Contatti: orizzonte che sorge con la griglia. Testo bianco solo nella metà alta. */
+/** Apertura della pagina Contatti: orizzonte che sorge con la griglia. Testo bianco a ogni altezza. */
 export function ContactHero() {
   return (
     <Scene as="header" className="al-page-hz al-stage">

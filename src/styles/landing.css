@@ -202,7 +202,7 @@ html,body{overflow-anchor:none} /* la navbar che si rimpicciolisce non deve spos
 @media (max-width:860px){.al-contact-direct-mail{font-size:24px;line-height:30px}}
 /* ── Apertura delle pagine interne (Contatti): orizzonte che sorge, testo bianco solo nella metà alta ── */
 .al-page-hz{background:var(--black);color:var(--white)}
-.al-page-hz .al-hz{height:160%} /* la fascia chiara resta sotto il testo bianco (≥ 6:1) */
+.al-page-hz .al-hz{height:160%} /* l'alba sale oltre il testo: il fondo resta scuro dietro titolo e lead */
 .al-page-hz-body{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);padding-block:var(--space-20) calc(var(--space-32) + var(--space-16));padding-inline:max(var(--space-8),env(safe-area-inset-left,0px))}
 .al-page-hz-body>.al-mono{grid-column:1 / -1;color:rgba(255,255,255,.7)}
 .al-page-hz h1{grid-column:1 / span 9;font:400 72px/76px var(--font-sans);letter-spacing:-.04em;margin:0;text-wrap:balance}

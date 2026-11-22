@@ -1,4 +1,4 @@
-import { contact, features, sectors, services, site, siteUrl, steps } from '@/content/site';
+import { contact, faqs, features, services, site, siteUrl, steps } from '@/content/site';
 
 // /llms.txt: riassunto in Markdown per gli assistenti AI (https://llmstxt.org). Generato dagli stessi testi del sito.
 export const dynamic = 'force-static';
@@ -9,19 +9,19 @@ export function GET() {
     '',
     `> ${site.description}`,
     '',
-    `Studio di sviluppo software con sede a ${site.locality} (${site.province}), ${site.region}. Lavora con PMI, attività locali e studi professionali. Lingua: italiano.`,
+    `Studio di consulenza digitale e sviluppo software con sede a ${site.locality} (${site.province}), ${site.region}. Lavora con PMI, attività locali e studi professionali. Lingua: italiano.`,
     '',
     '## Servizi',
     '',
-    ...services.map((s) => `- **${s.title}**: ${s.lead} ${s.text} (${s.points.join(', ')})`),
+    ...services.map((s) => `- **${s.name}**: ${s.lead} ${s.text} (${s.points.join(', ')})`),
     '',
-    '## Per chi lavoriamo',
-    '',
-    ...sectors.map((s) => `- **${s.label.replace(/\/$/, '')}** (${s.title}): ${s.text} Soluzioni: ${s.fit.join(', ')}.`),
-    '',
-    '## Metodo',
+    '## Come lavoriamo',
     '',
     ...steps.map((s, i) => `${i + 1}. **${s.title}**: ${s.text}`),
+    '',
+    '## Domande',
+    '',
+    ...faqs.map((f) => `- **${f.q}** ${f.a}`),
     '',
     '## Contatti',
     '',
@@ -33,7 +33,7 @@ export function GET() {
     '',
     '## Pagine',
     '',
-    `- [Home](${siteUrl}/): servizi, settori, metodo${features.work ? ' e lavori' : ''}`,
+    `- [Home](${siteUrl}/): come lavoriamo, servizi, case study, studio e domande`,
     `- [Contatti](${siteUrl}/contatti): raccontaci il tuo progetto`,
     ...(features.legal ? [`- [Privacy](${siteUrl}/privacy)`, `- [Cookie](${siteUrl}/cookie)`] : []),
     '',

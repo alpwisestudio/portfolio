@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Button, cx, Mono, Navbar } from '@alpwisestudio/ui';
+import { Button, cx, Navbar } from '@alpwisestudio/ui';
 import { contact, nav } from '@/content/site';
 
 const COMPACT = 80;    // oltre questa soglia la navbar diventa compatta
@@ -9,7 +9,7 @@ const FULL = 24;       // sotto questa torna piena (due soglie: niente sfarfalli
 const MENU_ID = 'menu-mobile';
 
 /**
- * Navbar sticky: piena in cima, compatta (staccata dai bordi e più stretta) appena scorri. Resta sempre visibile.
+ * Navbar sticky: in cima trasparente sopra la foto dell'apertura, compatta (staccata dai bordi, più stretta, con fondo) appena scorri.
  * Su telefono il menu copre lo schermo sotto la barra: voci grandi che salgono una dopo l'altra, in fondo email e bottone.
  */
 export function SiteNav() {
@@ -53,7 +53,7 @@ export function SiteNav() {
   const close = () => setOpen(false);
   return (
     <div ref={wrap} className={cx('al-sticky', !atTop && 'is-compact', open && 'is-menu-open')}>
-      <Navbar items={nav} cta={{ href: '/contatti', label: 'Inizia un progetto' }} onMenu={() => setOpen((o) => !o)} menuOpen={open} menuId={MENU_ID} />
+      <Navbar items={nav} clear={atTop && !open} cta={{ href: '/contatti', label: 'Parliamone' }} onMenu={() => setOpen((o) => !o)} menuOpen={open} menuId={MENU_ID} />
       <div ref={menu} id={MENU_ID} className={cx('al-mnav', open && 'is-open')} inert={!open} aria-hidden={!open}>
         <nav aria-label="Menu">
           <ul className="al-mnav-links">
@@ -61,7 +61,6 @@ export function SiteNav() {
               <li key={n.href}>
                 <a href={n.href} onClick={close} style={{ '--i': i } as CSSProperties}>
                   <span>{n.label}</span>
-                  {'hint' in n && n.hint && <Mono>{n.hint}</Mono>}
                 </a>
               </li>
             ))}
@@ -69,7 +68,7 @@ export function SiteNav() {
         </nav>
         <div className="al-mnav-foot">
           {contact.email && <a className="al-mnav-mail" href={`mailto:${contact.email}`}>{contact.email}</a>}
-          <Button size="lg" href="/contatti" onClick={close}>Inizia un progetto</Button>
+          <Button size="lg" href="/contatti" onClick={close}>Parliamone</Button>
         </div>
       </div>
     </div>

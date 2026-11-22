@@ -1,26 +1,25 @@
-import { Cta } from '@/components/landing/Cta';
+import { CaseBook } from '@/components/landing/CaseBook';
+import { Faq } from '@/components/landing/Faq';
 import { Hero } from '@/components/landing/Hero';
+import { Intro } from '@/components/landing/Intro';
 import { Method } from '@/components/landing/Method';
-import { Sectors } from '@/components/landing/Sectors';
 import { Services } from '@/components/landing/Services';
 import { SiteFooter } from '@/components/landing/SiteFooter';
 import { SiteNav } from '@/components/landing/SiteNav';
 import { Studio } from '@/components/landing/Studio';
-import { Work } from '@/components/landing/Work';
-import { features } from '@/content/site';
 
 export default function Home() {
   return (
     <>
       <SiteNav />
-      <Hero />
       <main>
-        <Studio />
-        <Services />
-        <Sectors />
+        <Hero />
+        <Intro />
         <Method />
-        {features.work && <Work />}
-        <Cta />
+        <Services />
+        <CaseBook />
+        <Studio />
+        <Faq />
       </main>
       <SiteFooter />
     </>

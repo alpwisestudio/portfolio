@@ -1,0 +1,114 @@
+/* ─────────────────────────────────────────────────────────────
+   Pagina /book: classi bk-*. Token e componenti da @alpwisestudio/ui, animazioni da motion.css e landing.css.
+   ───────────────────────────────────────────────────────────── */
+
+/* ── Cornici delle schermate ── */
+.bk-browser{margin:0;background:var(--night);border:1px solid var(--line-strong);border-radius:var(--radius-sm);overflow:hidden;box-shadow:var(--shadow-overlay)}
+.bk-browser-bar{display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-bottom:1px solid var(--ink-700);background:var(--ink-900)}
+.bk-browser-bar i{width:8px;height:8px;border:1px solid var(--ink-600);flex:none}
+.bk-browser-bar span{margin-left:10px;padding:3px 10px;border:1px solid var(--ink-700);font:400 12px/16px var(--font-sans);font-variant-numeric:tabular-nums;color:var(--grey-300);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.bk-browser img{display:block;width:100%;height:auto}
+.bk-phone{margin:0;padding:6px;background:var(--night);border:1px solid var(--ink-600);border-radius:34px;box-shadow:var(--shadow-overlay);overflow:hidden}
+.bk-phone img{display:block;width:100%;height:auto;border-radius:28px}
+
+/* ── Apertura ── */
+.bk-hero{margin-top:calc(-1 * var(--nav-h));padding-top:var(--nav-h);color:var(--white);overflow:hidden}
+.bk-hero-body{display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--space-20) var(--space-8) var(--space-16)}
+.bk-on-hz.al-kicker,.bk-on-hz{color:rgba(255,255,255,.86)}
+.bk-hero h1{margin:var(--space-6) 0 0;font:400 clamp(48px,6.4vw,92px)/1 var(--font-sans);letter-spacing:-.045em;max-width:17ch;text-wrap:balance}
+.bk-hero-lead{margin:var(--space-6) 0 0;font:300 20px/30px var(--font-sans);color:rgba(255,255,255,.86);max-width:52ch;text-wrap:pretty}
+.bk-hero-actions{display:flex;flex-wrap:wrap;gap:var(--space-2);justify-content:center;margin-top:var(--space-8)}
+.bk-hero-vis{position:relative;padding:0 var(--space-8) var(--space-20);max-width:1200px}
+.bk-hero-desk{width:88%;border-color:rgba(255,255,255,.18)}
+.bk-hero-phone{position:absolute;right:var(--space-8);bottom:var(--space-8);width:min(24%,280px)}
+@media (max-width:767px){
+  .bk-hero-body{padding:var(--space-16) 16px var(--space-12)}
+  .bk-hero h1{font-size:42px;line-height:44px}
+  .bk-hero-lead{font-size:18px;line-height:28px}
+  .bk-hero-actions{flex-direction:column;align-items:stretch;width:100%;max-width:340px}
+  .bk-hero-vis{padding:0 16px var(--space-16)}
+  .bk-hero-desk{width:100%}
+  .bk-hero-phone{position:relative;right:auto;bottom:auto;width:62%;margin:-90px auto 0}
+}
+
+/* ── Testi comuni ── */
+.bk-h2{margin:0;font:400 clamp(36px,4.2vw,60px)/1.02 var(--font-sans);letter-spacing:-.04em;color:var(--text);text-wrap:balance}
+.bk-lead{margin:var(--space-6) 0 0;font:300 20px/30px var(--font-sans);color:var(--text-muted);max-width:46ch;text-wrap:pretty}
+.bk-note{margin:var(--space-6) 0 0;font:400 14px/20px var(--font-sans);color:var(--text-subtle)}
+.bk-num{display:inline-block;min-width:32px;font:400 14px/20px var(--font-sans);font-variant-numeric:tabular-nums;color:var(--text-subtle)}
+.bk-checks{list-style:none;margin:var(--space-8) 0 0;padding:0;border-top:1px solid var(--line)}
+.bk-checks li{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:24px;color:var(--text)}
+.bk-checks li::before{content:"";flex:none;width:8px;height:8px;margin-top:8px;background:var(--primary)}
+.bk-split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-16);align-items:center}
+.bk-split-rev{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}
+@media (max-width:1023px){.bk-split,.bk-split-rev{grid-template-columns:1fr;gap:var(--space-12)}}
+@media (max-width:767px){.bk-lead{font-size:18px;line-height:28px}}
+
+/* ── Il perché ── */
+.bk-intro .lp-kicker-sub{margin-bottom:var(--space-12)}
+
+/* ── Per i clienti: quattro passi ── */
+.bk-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-6)}
+.bk-step p{margin:var(--space-4) 0 0;font:400 20px/28px var(--font-sans);letter-spacing:-.01em;color:var(--text)}
+@media (hover:hover){.bk-step .bk-phone{transition:transform var(--motion-slow) var(--ease-out)}.bk-step:hover .bk-phone{transform:translateY(-8px)}}
+@media (max-width:1023px){.bk-steps{grid-template-columns:repeat(4,minmax(220px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:var(--space-4);margin-inline:-16px;padding-inline:16px}.bk-step{scroll-snap-align:start}}
+
+/* ── Sul tuo sito ── */
+.bk-code{margin:var(--space-8) 0 0;padding:16px 18px;background:var(--surface-sunken);border:1px solid var(--line);font:400 13px/22px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text);overflow-x:auto;white-space:pre}
+
+/* ── Portale: funzioni ── */
+.bk-features{list-style:none;margin:var(--space-12) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.bk-features li{padding:var(--space-6) var(--space-6) 0 0}
+.bk-features li+li{padding-left:var(--space-6);border-left:1px solid var(--line)}
+.bk-features h3{margin:var(--space-3) 0 var(--space-2);font:400 24px/30px var(--font-sans);letter-spacing:-.02em;color:var(--text)}
+.bk-features p{margin:0;font-size:16px;line-height:26px;color:var(--text-muted)}
+@media (max-width:1023px){.bk-features{grid-template-columns:1fr 1fr}.bk-features li:nth-child(3){padding-left:0;border-left:0}.bk-features li{padding-bottom:var(--space-6)}}
+@media (max-width:767px){.bk-features{grid-template-columns:1fr}.bk-features li+li{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* ── Dal telefono: tre telefoni a ventaglio ── */
+.bk-mobile-phones{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);align-items:start}
+.bk-mobile-phones .is-b{margin-top:var(--space-12)}
+.bk-mobile-phones .is-c{margin-top:var(--space-6)}
+
+/* ── Linguette con le schermate ── */
+.bk-tabs{display:grid;grid-template-columns:minmax(240px,3fr) minmax(0,9fr);gap:var(--space-8);align-items:start}
+.bk-tablist{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.bk-tab{all:unset;box-sizing:border-box;display:grid;grid-template-columns:32px 1fr;gap:2px 8px;padding:16px 12px 16px 14px;border-bottom:1px solid var(--line);border-left:2px solid transparent;cursor:pointer;transition:background var(--motion-fast),border-color var(--motion-base)}
+.bk-tab:hover{background:var(--surface)}
+.bk-tab:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.bk-tab[aria-selected="true"]{border-left-color:var(--primary);background:var(--surface)}
+.bk-tab-n{grid-row:span 2;font:400 14px/26px var(--font-sans);font-variant-numeric:tabular-nums;color:var(--text-subtle)}
+.bk-tab[aria-selected="true"] .bk-tab-n{color:var(--link)}
+.bk-tab-l{font:400 20px/26px var(--font-sans);letter-spacing:-.01em;color:var(--text)}
+.bk-tab-t{font-size:14px;line-height:20px;color:var(--text-muted)}
+.bk-tabpanel:not([hidden]){animation:al-fade-up var(--motion-base) var(--ease-out) both}
+@media (max-width:1023px){
+  .bk-tabs{grid-template-columns:1fr;gap:var(--space-6)}
+  .bk-tablist{flex-direction:row;overflow-x:auto;border-top:0;border-bottom:1px solid var(--line)}
+  .bk-tab{flex:none;display:flex;border:0;border-bottom:2px solid transparent;padding:12px 14px}
+  .bk-tab[aria-selected="true"]{border-bottom-color:var(--primary);background:transparent}
+  .bk-tab-n,.bk-tab-t{display:none}
+  .bk-tab-l{font-size:16px;line-height:22px}
+}
+
+/* ── Email ── */
+.bk-emails-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);align-items:start}
+.bk-emails-pair>:nth-child(2){margin-top:var(--space-16)}
+.bk-email{max-height:640px;border-radius:24px}
+.bk-email img{border-radius:18px}
+
+/* ── Privacy ── */
+.bk-trust-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6)}
+.bk-trust-grid li{padding:var(--space-8);background:var(--surface);border:1px solid var(--line)}
+.bk-trust-grid h3{margin:0 0 var(--space-3);font:400 28px/34px var(--font-sans);letter-spacing:-.02em;color:var(--text)}
+.bk-trust-grid p{margin:0;font-size:16px;line-height:26px;color:var(--text-muted)}
+@media (max-width:860px){.bk-trust-grid{grid-template-columns:1fr}}
+
+/* ── Chiusura ── */
+.bk-cta{color:var(--white)}
+.bk-cta-body{display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--space-32) var(--space-8)}
+.bk-cta h2{margin:0;font:400 clamp(44px,6vw,88px)/1 var(--font-sans);letter-spacing:-.045em;text-wrap:balance}
+.bk-cta p{margin:var(--space-6) 0 0;font:300 20px/30px var(--font-sans);color:rgba(255,255,255,.86);max-width:44ch}
+@media (max-width:767px){.bk-cta-body{padding:var(--space-20) 16px}.bk-cta h2{font-size:40px;line-height:42px}}
+
+@media (prefers-reduced-motion:reduce){.bk-tabpanel:not([hidden]),.bk-step .bk-phone{animation:none!important;transition:none!important}}

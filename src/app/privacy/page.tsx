@@ -93,7 +93,7 @@ export default function PrivacyPage() {
   return (
     <>
       <JsonLd data={pageLd({ ...seo, name: seo.title })} />
-      <LegalPage label="Privacy/" title="Come trattiamo i tuoi dati" lead="Raccogliamo solo i dati che servono per risponderti e far funzionare il sito. Qui trovi quali sono, perché li usiamo e come puoi controllarli." sections={sections} />
+      <LegalPage label="Privacy" title="Come trattiamo i tuoi dati" lead="Raccogliamo solo i dati che servono per risponderti e far funzionare il sito. Qui trovi quali sono, perché li usiamo e come puoi controllarli." sections={sections} />
     </>
   );
 }

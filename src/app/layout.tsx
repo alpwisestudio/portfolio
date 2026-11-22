@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   publisher: site.name,
   category: 'technology',
   keywords: [
-    'software su misura', 'siti vetrina', 'sviluppo web', 'gestionale su misura', 'AI per PMI', 'automazioni',
+    'consulenza digitale', 'software su misura', 'siti vetrina', 'sviluppo web', 'gestionale su misura', 'AI per PMI', 'automazioni',
     'web agency Gallarate', 'sviluppatori Gallarate', 'provincia di Varese',
   ],
   alternates: { canonical: '/', languages: { 'it-IT': '/' } },
@@ -44,11 +44,18 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: '#000000' };
+const MOTION_WAIT = "(function(){var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('m-wait');setTimeout(function(){if(d.dataset.motion!=='on')d.classList.remove('m-wait')},3000)})()";
+
+export const viewport: Viewport = { themeColor: '#06080B' };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="it" data-theme="dark">
+    <html lang="it" data-theme="dark" suppressHydrationWarning>
+      <head>
+        {/* Prima del primo disegno: nasconde gli elementi che entreranno animati, così non si vedono fermi e poi sparire.
+            Niente con meno movimento; se dopo 3 secondi le animazioni non sono partite (JS fermo) mostra tutto. */}
+        <script dangerouslySetInnerHTML={{ __html: MOTION_WAIT }} />
+      </head>
       <body>
         <JsonLd data={[organizationLd(), websiteLd()]} />
         {children}

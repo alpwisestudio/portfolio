@@ -21,6 +21,12 @@ Obiettivo: WCAG 2.2 AA in entrambi i temi, orizzonte compreso.
 - `primary` come elemento non testuale (bordi attivi, fili, caselle) è 3.6:1 sul nero e 5.8:1 sul bianco: sopra il 3:1 richiesto.
 - In Chiaro `sky-500` non è un colore di testo (2.6:1 sul bianco): link e accenti usano `sky-700`.
 
+## Testo su foto e vetro
+
+- Il velo (`photo-scrim`) tiene il testo bianco leggibile su tutta la foto; titoli e frasi stanno dove il velo è più scuro (in alto o in basso), mai su un cielo chiaro senza velo.
+- Sul vetro: testo bianco, testo secondario `grey-200`/`grey-300`, campi con bordo bianco al 30% e focus `sky-400`.
+- Gli errori sul vetro usano il rosso del tema Scuro (`#FF7A85`) anche in Chiaro.
+
 ## Testo sull'orizzonte
 
 - Misurato sul pixel più chiaro sotto ogni riga della hero (960px): titolo ≥ 8.3:1, lead ≥ 6.0:1 (bianco all'86%: ≥ 5:1).

@@ -1,6 +1,4 @@
-import type { IconName } from '@alpwisestudio/ui';
-
-// Contenuti della landing. I valori `null` sono ancora da fornire: la pagina li mostra come segnaposto tratteggiati.
+// Contenuti del sito. I valori `null` sono ancora da fornire: il sito li nasconde.
 // Clienti, numeri e citazioni devono essere reali (CLAUDE.md): non riempirli con esempi.
 
 // Dominio pubblico: `NEXT_PUBLIC_SITE_URL` se impostato, altrimenti il dominio di produzione che Vercel espone in build.
@@ -12,8 +10,8 @@ export const siteUrl = (
 // Dati usati da metadata, sitemap, dati strutturati (JSON-LD) e llms.txt.
 export const site = {
   name: 'Alpwise Studio',
-  title: 'Alpwise Studio · Siti, software su misura e AI a Gallarate',
-  description: 'Siti vetrina, software su misura, AI e automazioni per le PMI. Tre sviluppatori a Gallarate (VA), in provincia di Varese: dalla prima chiamata alla messa online parli con chi scrive il codice.',
+  title: 'Alpwise Studio · Consulenza digitale per PMI a Gallarate',
+  description: 'Consulenza digitale per le PMI: siti, gestionali su misura, AI e automazioni. Tre consulenti e sviluppatori a Gallarate (VA): prima ascoltiamo come lavori, poi ti diciamo cosa serve davvero.',
   locale: 'it_IT',
   locality: 'Gallarate',
   province: 'VA',
@@ -49,58 +47,61 @@ export const legal = {
 
 // Parti del sito non ancora pronte per il pubblico. Rimetti `true` quando i contenuti sono reali.
 export const features = {
-  work: false,        // sezione Lavori: servono progetti veri
   legal: false,       // pagine Privacy e Cookie: servono dati legali verificati
   contactForm: true,  // modulo contatti (invia a /api/contact: email via Resend, oppure CONTACT_WEBHOOK_URL)
 };
 
-const allNav = [
-  { label: 'Servizi', href: '/#servizi', hint: 'Web, software, AI/' },
-  { label: 'Per chi', href: '/#per-chi', hint: 'Settori/' },
-  { label: 'Metodo', href: '/#metodo', hint: '4 passi/' },
-  { label: 'Lavori', href: '/#lavori', hint: 'Progetti/' },
-  { label: 'Studio', href: '/#studio', hint: 'Chi siamo/' },
+export const nav = [
+  { label: 'Come lavoriamo', href: '/#metodo' },
+  { label: 'Servizi', href: '/#servizi' },
+  { label: 'Alpwise book', href: '/book' },
+  { label: 'Studio', href: '/#studio' },
+  { label: 'Domande', href: '/#domande' },
 ];
-export const nav = allNav.filter((n) => features.work || n.href !== '/#lavori');
 
-export const sectorWords = ['la tua azienda', 'il tuo studio', 'la tua officina', 'il tuo negozio'];
+// Foto del sito (public/photos). Tutte scure sotto il velo Notte: testo bianco sopra.
+export const photos = {
+  lago: { src: '/photos/lago-alba.jpg', width: 1536, height: 1024, alt: "Lago Maggiore all'alba con le Prealpi" },
+  consulenza: { src: '/photos/consulenza.jpg', width: 1024, height: 1024, alt: 'Consulenza al tavolo in bottega' },
+  sentiero: { src: '/photos/sentiero.jpg', width: 1024, height: 1280, alt: 'Sentiero che sale verso un rifugio' },
+  quaderno: { src: '/photos/quaderno.jpg', width: 1024, height: 1024, alt: 'Mani che scrivono un piano su un quaderno' },
+  nebbia: { src: '/photos/lago-nebbia.jpg', width: 1024, height: 1024, alt: 'Lago nella nebbia del mattino tra le montagne' },
+};
 
+// `title`: la riga grande della home. `name`, `lead`, `points`: per dati strutturati e llms.txt.
 export const services = [
   {
-    id: 'web', label: 'Web/', title: 'Siti vetrina',
+    id: 'web', name: 'Siti vetrina', title: 'Siti che portano clienti',
+    text: 'Vetrina, prenotazioni e contatti che arrivano da soli.',
     lead: 'Un sito chiaro che dice chi sei, cosa fai e come contattarti.',
-    text: 'Veloce da caricare, facile da trovare su Google, semplice da aggiornare. Pensato per attività locali e studi professionali.',
-    points: ['Design su misura', 'Testi e SEO locale', 'Hosting e manutenzione'],
+    points: ['Design su misura', 'Testi e SEO locale', 'Prenotazioni online', 'Hosting e manutenzione'],
   },
   {
-    id: 'software', label: 'Software/', title: 'Software su misura',
+    id: 'software', name: 'Gestionali su misura', title: 'Gestionali su misura',
+    text: 'Al posto di Excel e messaggi sparsi, uno strumento fatto su di te.',
     lead: 'Quando fogli Excel ed email non bastano più.',
-    text: 'Partiamo dal tuo processo e costruiamo lo strumento che serve: un gestionale, un portale per i clienti, un SaaS B2B.',
-    points: ['Gestionali e portali', 'Aree clienti', 'React, Spring Boot'],
+    points: ['Gestionali e portali', 'Aree clienti', 'Prenotazioni'],
   },
   {
-    id: 'ai', label: 'AI/', title: 'AI e automazioni',
+    id: 'ai', name: 'AI e automazioni', title: 'AI, solo se serve',
+    text: 'Ti diciamo con onestà quando ti fa risparmiare tempo e quando no.',
     lead: 'Meno lavoro ripetitivo, più tempo per il resto.',
-    text: "Colleghiamo i tuoi strumenti e automatizziamo i passaggi manuali. Usiamo l'AI dove fa risparmiare tempo davvero.",
     points: ['Estrazione dati da documenti', 'Assistenti sui dati aziendali', 'Integrazioni tra strumenti'],
   },
 ];
 
-// Proposta da confermare con lo studio.
-// `problem`: problemi tipici detti come li direbbe il cliente, non citazioni reali.
-export const sectors: { icon: IconName; label: string; title: string; problem: string; text: string; fit: string[] }[] = [
-  { icon: 'pin', label: 'Attività locali/', title: 'Negozi, ristoranti, artigiani', problem: 'Chi mi cerca su Google non trova orari e contatti.', text: 'Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.', fit: ['Sito vetrina', 'Scheda Google e SEO locale'] },
-  { icon: 'layers', label: 'Studi professionali/', title: 'Commercialisti, tecnici, consulenti', problem: 'I clienti chiedono sempre le stesse cose.', text: 'Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.', fit: ['Area clienti', 'Estrazione dati da documenti'] },
-  { icon: 'chart', label: 'PMI e B2B/', title: 'Aziende con processi propri', problem: 'Il lavoro vero vive su Excel ed email.', text: 'Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.', fit: ['Gestionale su misura', 'Integrazioni e automazioni'] },
-];
-
 export const steps = [
-  { label: 'Ascolto/', title: 'Capiamo il problema', text: 'Una chiamata per capire come lavori oggi e cosa ti rallenta. Senza impegno.' },
-  { label: 'Proposta/', title: 'Preventivo scritto', text: 'Cosa facciamo, con quali tecnologie, in che tempi. E cosa resta fuori.' },
-  { label: 'Sviluppo/', title: 'Rilasci frequenti', text: 'Vedi il lavoro crescere mentre lo costruiamo e correggi la rotta presto.' },
-  { label: 'Online/', title: 'Messa online e cura', text: 'Pubblichiamo, ti mostriamo come usarlo e restiamo il tuo riferimento.' },
+  { title: 'Ascoltiamo', text: 'Un caffè, anche online. Ci racconti una tua giornata di lavoro.', photo: 'consulenza' },
+  { title: 'Proponiamo', text: 'Cosa serve, cosa no, quanto costa e in quanto tempo. In italiano, non in sigle.', photo: 'quaderno' },
+  { title: 'Costruiamo e restiamo', text: 'Lo realizziamo, ti insegniamo a usarlo e restiamo raggiungibili.', photo: 'sentiero' },
+] as const;
+
+export const faqs = [
+  { q: 'Quanto costa?', a: 'Dipende da cosa serve davvero. Dopo la prima chiacchierata, che è gratuita, ricevi una proposta scritta con un prezzo chiaro.' },
+  { q: 'Devo capirne di tecnologia?', a: 'No. Tu conosci il tuo lavoro, noi gli strumenti. Ti spieghiamo ogni scelta con parole semplici.' },
+  { q: 'Lavorate solo in zona?', a: 'No. Veniamo volentieri da te in azienda tra Varese, Milano e i laghi. Più lontano lavoriamo online, con videochiamate e documenti condivisi.' },
+  { q: 'E dopo il lancio?', a: 'Restiamo. Aggiornamenti, piccole modifiche e un numero da chiamare quando qualcosa non va.' },
 ];
 
-// Vuoto finché non c'è un progetto reale: la sezione mostra righe segnaposto.
-export const projects: { client: string; service: string; year: string; href: string }[] = [];
-export const projectPlaceholders = ['Sito vetrina', 'Gestionale su misura', 'Automazione documenti'];
+// Cosa chiede il modulo contatti ("Ti serve una mano con").
+export const needs = ['Sito', 'Gestionale', 'AI e automazioni', 'Non lo so ancora'];

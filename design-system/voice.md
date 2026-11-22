@@ -13,8 +13,7 @@ Parliamo come tre sviluppatori seduti al tavolo con il titolare di una PMI: comp
 
 - Maiuscola solo a inizio frase. Titoli senza punto finale.
 - Nel testo: **Alpwise Studio**, con le iniziali maiuscole. Il wordmark ha "Alpwise" grande e "STUDIO" piccolo in maiuscolo.
-- Etichette mono con barra finale: `Servizi/`, `Contatti/`, `Azione irreversibile/`.
-- Elenchi tecnici ad albero: `└─ React`, `└─ Spring Boot`.
+- Etichette in frase normale, senza barra finale: `Come lavoriamo`, `Contatti`, `Azione irreversibile`.
 - Niente punti esclamativi, niente emoji. Numeri in cifre, migliaia col punto, € dopo la cifra.
 
 ## Microcopy
@@ -24,7 +23,7 @@ Parliamo come tre sviluppatori seduti al tavolo con il titolare di una PMI: comp
 | CTA principale | Inizia un progetto | Contattaci ora! |
 | Preventivo | Richiedi un preventivo | Get a quote |
 | Invio riuscito | Messaggio inviato. Ti rispondiamo entro un giorno lavorativo. | Grazie! Richiesta inoltrata con successo! |
-| Errore email | └─ Manca la parte dopo la @, es. mario@azienda.it | Campo non valido |
+| Errore email | Manca la parte dopo la @, es. mario@azienda.it | Campo non valido |
 | Errore di rete | Invio non riuscito. Controlla la connessione e riprova. | Ops, qualcosa è andato storto |
 | Conferma distruttiva | Eliminare il progetto? · Elimina progetto | Sei sicuro? · OK |
 | Stato vuoto | Ancora nessun progetto. Creane uno per iniziare. | Nessun dato |

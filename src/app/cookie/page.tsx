@@ -62,7 +62,7 @@ export default function CookiePage() {
   return (
     <>
       <JsonLd data={pageLd({ ...seo, name: seo.title })} />
-      <LegalPage label="Cookie/" title="Cookie" lead="Usiamo solo quello che serve a far funzionare il sito. Niente tracciamento e niente pubblicità." sections={sections} />
+      <LegalPage label="Cookie" title="Cookie" lead="Usiamo solo quello che serve a far funzionare il sito. Niente tracciamento e niente pubblicità." sections={sections} />
     </>
   );
 }

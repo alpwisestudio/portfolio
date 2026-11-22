@@ -22,19 +22,19 @@ export function LegalPage({ label, title, lead, sections }: { label: string; tit
         <Scene as="div" className="al-section">
           <div className="al-container">
             <div className="al-head">
-              <span className="al-mono">{label}</span>
+              <span className="al-kicker">{label}</span>
               <h1 className="al-legal-title" style={d(100)}><Words>{title}</Words></h1>
               <div className="al-legal-intro" data-m="fade-up" style={d(400)}>
                 <p>{lead}</p>
                 <div className="al-legal-meta">
-                  <span className="al-mono">Ultimo aggiornamento/ <Val v={legal.updated} ph="gg.mm.aaaa" /></span>
+                  <span className="al-kicker">Ultimo aggiornamento <Val v={legal.updated} ph="gg.mm.aaaa" /></span>
                   <Tag tone="warning" dot>Bozza da far verificare a un consulente</Tag>
                 </div>
               </div>
             </div>
             <div className="al-legal">
               <nav className="al-legal-toc" aria-label="Indice della pagina">
-                <Tree title="Indice/" items={sections.map((s) => ({ label: s.title, href: `#${s.id}` }))} />
+                <Tree title="Indice" items={sections.map((s) => ({ label: s.title, href: `#${s.id}` }))} />
               </nav>
               <div className="al-legal-body">
                 {sections.map((s) => (

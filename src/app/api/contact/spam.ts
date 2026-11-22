@@ -40,10 +40,10 @@ const linkRe = /(https?:\/\/|www\.)\S+/gi;
 const links = (s: string) => s.match(linkRe)?.length ?? 0;
 const spamRe = /\b(viagra|cialis|casino|crypto ?invest|bitcoin|forex|loan|seo services?|backlinks?|porn)\b/i;
 
-export function checkSpam(req: Request, f: { company: string; startedAt: number; name: string; message: string }): Verdict {
+export function checkSpam(req: Request, f: { website: string; startedAt: number; name: string; message: string }): Verdict {
   if (!sameOrigin(req)) return 'origin';
   if (rateLimited(clientIp(req), Date.now())) return 'limit';
-  if (f.company) return 'bot';                                   // campo trappola compilato
+  if (f.website) return 'bot';                                   // campo trappola compilato
   const elapsed = Date.now() - f.startedAt;
   if (!Number.isFinite(elapsed) || elapsed < MIN_FILL_MS || elapsed > MAX_FILL_MS) return 'bot';
   if (links(f.name) || /[<>]/.test(f.name)) return 'bot';  // un nome non contiene link o tag

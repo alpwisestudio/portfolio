@@ -1,16 +1,17 @@
 'use client';
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { Button, Field, Input, Mono, Toast } from '@alpwisestudio/ui';
+import Image from 'next/image';
+import { Button, Checkbox, Field, Glass, Input, Kicker, Toast } from '@alpwisestudio/ui';
 import { Scene } from '@/components/motion';
-import { contact, features } from '@/content/site';
+import { contact, features, needs, photos } from '@/content/site';
 
 type Errors = Partial<Record<'name' | 'email', string>>;
 type Status = 'idle' | 'sending' | 'sent' | 'error' | 'off' | 'limit';
 
 /**
- * Pagina Contatti, sotto l'apertura: recapiti a sinistra, a destra il modulo (invia a /api/contact)
- * oppure, finché `features.contactForm` è spento, un riquadro con l'email.
+ * Pagina Contatti, sotto l'apertura: a sinistra email, telefono e sede in grande; a destra, su una foto,
+ * il modulo in vetro (invia a /api/contact) oppure, finché `features.contactForm` è spento, l'email.
  */
 export function Contact() {
   const [errors, setErrors] = useState<Errors>({});
@@ -18,9 +19,6 @@ export function Contact() {
   // Quando il modulo è comparso: il server scarta gli invii troppo rapidi per essere di una persona.
   const startedAt = useRef(0);
   useEffect(() => { startedAt.current = Date.now(); }, []);
-  // Solo i recapiti che abbiamo davvero: niente segnaposto sul sito pubblicato.
-  const all: [string, string | null][] = [['Email', contact.email], ['Telefono', contact.phone], ['Sede', contact.address], ['Risposta', contact.reply]];
-  const rows = all.filter((r): r is [string, string] => !!r[1]);
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -31,53 +29,87 @@ export function Contact() {
     setErrors(next);
     if (Object.keys(next).length) { e.currentTarget.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus(); return; }
     setStatus('sending');
+    const body = {
+      name: data.get('name'), company: data.get('company'), email: data.get('email'), phone: data.get('phone'),
+      service: data.getAll('service').join(', '), message: data.get('message'), website: data.get('website'), startedAt: startedAt.current,
+    };
     try {
-      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(data), startedAt: startedAt.current }) });
+      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
       setStatus(res.ok ? 'sent' : res.status === 503 ? 'off' : res.status === 429 ? 'limit' : 'error');
     } catch { setStatus('error'); }
   }
 
   return (
-    <Scene as="section" id="contatti" className="al-section al-anchor">
-      <div className="al-container al-contact">
-        <div className="al-contact-info">
-          <Mono style={{ color: 'var(--text-subtle)' }}>Recapiti/</Mono>
-          <dl className="al-spec">
-            {rows.map(([k, v]) => (
-              <div key={k}>
-                <dt>{k}</dt>
-                <dd>{k === 'Email' ? <a className="al-contact-mail" href={`mailto:${v}`}>{v}</a>
-                  : k === 'Telefono' ? <a className="al-contact-mail" href={`tel:${v.replace(/\s/g, '')}`}>{v}</a> : v}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-        <div className="al-contact-form">
-          {!features.contactForm && contact.email ? (
-            <div className="al-contact-direct">
-              <Mono>Scrivici/</Mono>
-              <a className="al-contact-direct-mail" href={`mailto:${contact.email}`}>{contact.email}</a>
-              <p>Raccontaci in due righe cosa fai e cosa ti rallenta. Ti rispondiamo entro un giorno lavorativo.</p>
-              <div><Button href={`mailto:${contact.email}`} arrow>Scrivi una email</Button></div>
-            </div>
-          ) : status === 'sent' ? (
-            <Toast tone="success" title="Messaggio inviato">Ti rispondiamo entro un giorno lavorativo.</Toast>
-          ) : (
-            <form className="al-form" onSubmit={submit} noValidate>
-              {/* Trappola per i bot: invisibile e fuori dal tab, le persone la lasciano vuota. */}
-              <div className="sr-only" aria-hidden="true"><label>Azienda<input name="company" tabIndex={-1} autoComplete="off" /></label></div>
-              <div className="al-form-row">
-                <Field label="Nome" required error={errors.name}><Input name="name" autoComplete="name" placeholder="Mario Rossi" /></Field>
-                <Field label="Email" required error={errors.email}><Input name="email" type="email" autoComplete="email" placeholder="mario@azienda.it" /></Field>
-              </div>
-              <Field label="Di cosa hai bisogno?"><Input as="select" name="service" options={['Sito vetrina', 'Software o SaaS su misura', 'AI e automazioni', 'Non lo so ancora']} /></Field>
-              <Field label="Il progetto in due righe" hint="Obiettivo e tempi bastano."><Input as="textarea" name="message" /></Field>
-              {status === 'error' && <Toast tone="danger" title="Invio non riuscito">Controlla la connessione e riprova.</Toast>}
-              {status === 'limit' && <Toast tone="warning" title="Troppe richieste">Hai inviato diversi messaggi di seguito. Riprova tra qualche minuto o scrivici per email.</Toast>}
-              {status === 'off' && <Toast tone="warning" title="Invio non ancora attivo">Il modulo non è ancora collegato. Riprova più tardi.</Toast>}
-              <div><Button type="submit" arrow loading={status === 'sending'}>{status === 'sending' ? 'Invio in corso' : 'Invia richiesta'}</Button></div>
-            </form>
+    <Scene as="section" id="contatti" className="al-section al-anchor lp-contact">
+      <div className="al-container lp-contact-grid">
+        <div className="lp-contact-info" data-m="fade-up">
+          {contact.email && (
+            <a className="lp-contact-row" href={`mailto:${contact.email}`}>
+              <Kicker>Scrivici</Kicker>
+              <span className="lp-contact-big">{contact.email}<span aria-hidden="true" className="lp-arr">→</span></span>
+            </a>
           )}
+          {contact.phone && (
+            <a className="lp-contact-row" href={`tel:${contact.phone.replace(/\s/g, '')}`}>
+              <Kicker>Chiamaci</Kicker>
+              <span className="lp-contact-big lp-tab">{contact.phone}<span aria-hidden="true" className="lp-arr">→</span></span>
+            </a>
+          )}
+          <div className="lp-contact-row">
+            <Kicker>Ci vediamo</Kicker>
+            <span className="lp-contact-big">Da te o online</span>
+            <span className="lp-contact-note">Veniamo noi in azienda tra Varese, Milano e i laghi. Altrimenti una videochiamata.</span>
+          </div>
+          <div className="lp-contact-photo"><Image src={photos.quaderno.src} alt={photos.quaderno.alt} fill sizes="(max-width: 860px) 100vw, 45vw" /></div>
+        </div>
+
+        <div className="al-photo al-photo-soft lp-contact-panel" data-m="fade-up">
+          <Image className="al-photo-img" src={photos.sentiero.src} alt="" fill sizes="(max-width: 860px) 100vw, 50vw" />
+          <Glass className="lp-contact-glass">
+            {!features.contactForm && contact.email ? (
+              <div className="lp-form-head">
+                <Kicker>Scrivici</Kicker>
+                <a className="lp-contact-big" href={`mailto:${contact.email}`}>{contact.email}</a>
+                <p className="lp-contact-note">Raccontaci in due righe cosa fai e cosa ti rallenta. Ti rispondiamo entro un giorno lavorativo.</p>
+              </div>
+            ) : status === 'sent' ? (
+              <Toast tone="success" title="Messaggio inviato">Ti rispondiamo entro un giorno lavorativo.</Toast>
+            ) : (
+              <form className="al-form lp-form" onSubmit={submit} noValidate>
+                <div className="lp-form-head">
+                  <Kicker>Oppure lascia due righe</Kicker>
+                  <h2>Ti richiamiamo noi.</h2>
+                </div>
+                {/* Trappola per i bot: invisibile e fuori dal tab, le persone la lasciano vuota. */}
+                <div className="sr-only" aria-hidden="true"><label>Sito web<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
+                <div className="al-form-row">
+                  <Field label="Nome" required error={errors.name}><Input name="name" autoComplete="name" /></Field>
+                  <Field label="Azienda"><Input name="company" autoComplete="organization" /></Field>
+                </div>
+                <div className="al-form-row">
+                  <Field label="Email" required error={errors.email}><Input name="email" type="email" autoComplete="email" /></Field>
+                  <Field label={<>Telefono <span className="lp-optional">facoltativo</span></>}><Input name="phone" type="tel" autoComplete="tel" /></Field>
+                </div>
+                <fieldset className="lp-needs">
+                  <legend className="al-label">Ti serve una mano con</legend>
+                  <div className="lp-chips">
+                    {needs.map((n) => (
+                      <label key={n} className="lp-chip"><input type="checkbox" name="service" value={n} /> {n}</label>
+                    ))}
+                  </div>
+                </fieldset>
+                <Field label="Di cosa ti occupi" hint="Per esempio: ristorante con 40 coperti, prenotazioni solo al telefono."><Input as="textarea" name="message" rows={4} /></Field>
+                {features.legal && <Checkbox name="privacy" required>Ho letto l’<a href="/privacy">informativa privacy</a> e accetto di essere ricontattato.</Checkbox>}
+                {status === 'error' && <Toast tone="danger" title="Invio non riuscito">Controlla la connessione e riprova.</Toast>}
+                {status === 'limit' && <Toast tone="warning" title="Troppe richieste">Hai inviato diversi messaggi di seguito. Riprova tra qualche minuto o scrivici per email.</Toast>}
+                {status === 'off' && <Toast tone="warning" title="Invio non ancora attivo">Il modulo non è ancora collegato. Riprova più tardi.</Toast>}
+                <div className="lp-form-foot">
+                  <Button type="submit" size="lg" loading={status === 'sending'}>{status === 'sending' ? 'Invio in corso' : 'Invia richiesta'}</Button>
+                  <span className="lp-contact-note">Risponde una persona, non un bot.</span>
+                </div>
+              </form>
+            )}
+          </Glass>
         </div>
       </div>
     </Scene>

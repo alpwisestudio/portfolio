@@ -30,6 +30,7 @@ export function Scene({ as: Tag = 'div', className, style, id, children, ...rest
   useIsoLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
+    document.documentElement.dataset.motion = 'on';
     const r = el.getBoundingClientRect();
     if (r.top < innerHeight * 0.9 && r.bottom > 0) { setState('play'); return; }
     setState('armed');
@@ -38,7 +39,7 @@ export function Scene({ as: Tag = 'div', className, style, id, children, ...rest
     return () => io.disconnect();
   }, []);
   return (
-    <Tag ref={ref} id={id} style={style} className={cx(className, state === 'armed' && 'is-armed', state === 'play' && 'is-play')} {...rest}>
+    <Tag ref={ref} id={id} style={style} className={cx('al-scene', className, state === 'armed' && 'is-armed', state === 'play' && 'is-play')} {...rest}>
       <ScenePlaying.Provider value={state === 'play'}>{children}</ScenePlaying.Provider>
     </Tag>
   );
@@ -161,3 +162,19 @@ export function Stagger({ as: Tag = 'div', delay = 0, className, children }: { a
   );
 }
 
+
+/** Aggiunge lp-armed all'elemento trovato con `selector` e lp-in quando entra in vista. Senza JS o con meno movimento resta fermo e visibile. */
+export function RevealOnView({ selector, threshold = 0.35 }: { selector: string; threshold?: number }) {
+  const reduced = useReducedMotion();
+  useEffect(() => {
+    const el = document.querySelector(selector);
+    if (!el || reduced) return;
+    el.classList.add('lp-armed');
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { el.classList.add('lp-in'); io.disconnect(); }
+    }, { threshold });
+    io.observe(el);
+    return () => { io.disconnect(); el.classList.remove('lp-armed', 'lp-in'); };
+  }, [selector, threshold, reduced]);
+  return null;
+}

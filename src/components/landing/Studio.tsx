@@ -1,21 +1,24 @@
-import { Button } from '@alpwisestudio/ui';
-import { Scene, Scramble, ScrollRead } from '@/components/motion';
+import Image from 'next/image';
+import { Button, Glass, Kicker } from '@alpwisestudio/ui';
+import { Scene, Words } from '@/components/motion';
 import { d } from '@/components/motion/delay';
+import { photos } from '@/content/site';
 
-const TEXT = 'Siamo tre sviluppatori a Gallarate, ai piedi delle Prealpi varesine. Costruiamo siti, software e automazioni per le PMI. Niente intermediari: dalla prima chiamata alla messa online parli con chi scrive il codice.';
-
-/** Studio: una frase grande che si accende mentre scorri. */
+/** Studio: il lago nella nebbia a tutta larghezza, titolo grande e un pannello in vetro. */
 export function Studio() {
   return (
-    <Scene as="section" id="studio" className="al-section al-anchor" aria-labelledby="studio-t">
-      <div className="al-container">
-        <div className="al-head al-head-flush">
-          <Scramble text="Studio/" />
-          <h2 id="studio-t" className="sr-only">Chi siamo</h2>
-          <ScrollRead text={TEXT} className="al-read" />
+    <Scene as="section" id="studio" className="al-photo al-photo-mid al-anchor lp-studio" aria-labelledby="studio-t">
+      <Image className="al-photo-img" src={photos.nebbia.src} alt={photos.nebbia.alt} fill sizes="100vw" />
+      <div className="al-container lp-studio-body">
+        <div className="lp-studio-title">
+          <Kicker className="lp-studio-kicker">Studio</Kicker>
+          <h2 id="studio-t"><Words>Uno studio piccolo.</Words><br /><span className="lp-dim-photo"><Words start={3}>Ti risponde chi lavora al tuo progetto.</Words></span></h2>
         </div>
-        <div className="al-read-foot">
-          <div data-m="fade-up" style={d(300)}><Button variant="outline" href="#metodo" arrow>Come lavoriamo</Button></div>
+        <div data-m="fade-up" style={d(250)}>
+          <Glass className="lp-studio-glass">
+            <p>Siamo cresciuti qui, tra le aziende di famiglia del Varesotto. Parliamo la tua lingua e veniamo volentieri da te. Niente call center.</p>
+            <div><Button variant="glass" size="lg" href="/contatti" arrow>Raccontaci il tuo progetto</Button></div>
+          </Glass>
         </div>
       </div>
     </Scene>

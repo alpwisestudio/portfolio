@@ -47,7 +47,7 @@ export function organizationLd(): Json {
       ...(contact.email && { email: contact.email }),
       ...(contact.phone && { telephone: contact.phone }),
     },
-    knowsAbout: services.flatMap((s) => [s.title, ...s.points]),
+    knowsAbout: services.flatMap((s) => [s.name, ...s.points]),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Servizi',
@@ -55,9 +55,9 @@ export function organizationLd(): Json {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: s.title,
+          name: s.name,
           description: `${s.lead} ${s.text}`,
-          serviceType: s.title,
+          serviceType: s.name,
           provider: { '@id': orgId },
           areaServed: site.areaServed.map((name) => ({ '@type': 'Place', name })),
         },

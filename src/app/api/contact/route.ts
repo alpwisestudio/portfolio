@@ -16,18 +16,20 @@ export async function POST(req: Request) {
   if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return NextResponse.json({ error: 'Dati mancanti o non validi.' }, { status: 400 });
   }
+  const company = String(body?.company ?? '').trim().slice(0, 200);
+  const phone = String(body?.phone ?? '').trim().slice(0, 40);
   const service = String(body?.service ?? '').trim().slice(0, 200);
   const message = String(body?.message ?? '').trim().slice(0, 5000);
 
-  const verdict = checkSpam(req, { company: String(body?.company ?? '').trim(), startedAt: Number(body?.startedAt), name, message });
+  const verdict = checkSpam(req, { website: String(body?.website ?? '').trim(), startedAt: Number(body?.startedAt), name, message });
   if (verdict === 'origin') return NextResponse.json({ error: 'Origine non ammessa.' }, { status: 403 });
   if (verdict === 'limit') return NextResponse.json({ error: 'Troppe richieste.' }, { status: 429 });
   // Bot: rispondiamo ok senza inoltrare nulla, così non capisce quale controllo l'ha fermato.
   if (verdict === 'bot') return NextResponse.json({ ok: true });
 
   try {
-    const ok = process.env.RESEND_API_KEY ? await sendEmail({ name, email, service, message })
-      : process.env.CONTACT_WEBHOOK_URL ? await sendWebhook(process.env.CONTACT_WEBHOOK_URL, { name, email, service, message })
+    const ok = process.env.RESEND_API_KEY ? await sendEmail({ name, company, email, phone, service, message })
+      : process.env.CONTACT_WEBHOOK_URL ? await sendWebhook(process.env.CONTACT_WEBHOOK_URL, { name, company, email, phone, service, message })
       : null;
     if (ok === null) return NextResponse.json({ error: 'Invio non configurato.' }, { status: 503 });
     return ok ? NextResponse.json({ ok: true }) : NextResponse.json({ error: 'Invio non riuscito.' }, { status: 502 });
@@ -36,9 +38,9 @@ export async function POST(req: Request) {
   }
 }
 
-type ContactRequest = { name: string; email: string; service: string; message: string };
+type ContactRequest = { name: string; company: string; email: string; phone: string; service: string; message: string };
 
-async function sendEmail({ name, email, service, message }: ContactRequest) {
+async function sendEmail({ name, company, email, phone, service, message }: ContactRequest) {
   const to = process.env.CONTACT_TO ?? contact.email;
   if (!to) return null;
   const res = await fetch('https://api.resend.com/emails', {
@@ -49,7 +51,7 @@ async function sendEmail({ name, email, service, message }: ContactRequest) {
       to: [to],
       reply_to: email,
       subject: `Nuova richiesta dal sito: ${name.replace(/[\r\n]+/g, ' ')}`,
-      text: [`Nome: ${name}`, `Email: ${email}`, `Servizio: ${service || '-'}`, '', message || '(nessun messaggio)'].join('\n'),
+      text: [`Nome: ${name}`, `Azienda: ${company || '-'}`, `Email: ${email}`, `Telefono: ${phone || '-'}`, `Serve una mano con: ${service || '-'}`, '', message || '(nessun messaggio)'].join('\n'),
     }),
   });
   return res.ok;

@@ -10,7 +10,7 @@ const ROWS = [
 ] as const;
 const DAYS = [['Lun', 17, 12], ['Mar', 18, null], ['Mer', 19, 8], ['Gio', 20, 14], ['Ven', 21, 26], ['Oggi', 22, 38], ['Dom', 23, 21]] as const;
 
-/** Il portale di BOOK in miniatura: menu a sinistra, settimana e prenotazioni della cena. Solo decorativo. */
+/** Il portale di Alpwise book in miniatura: menu a sinistra, settimana e prenotazioni della cena. Solo decorativo. */
 function BookPreview() {
   return (
     <div className="lp-book" data-theme="dark" aria-hidden="true">
@@ -45,14 +45,14 @@ function BookPreview() {
   );
 }
 
-/** Case study: BOOK, il gestionale di prenotazioni che abbiamo costruito per la ristorazione. */
+/** Case study: Alpwise book, il gestionale di prenotazioni che abbiamo costruito per la ristorazione. */
 export function CaseBook() {
   return (
     <Scene as="section" className="lp-case-wrap" aria-labelledby="case-t">
       <div className="al-container">
         <article className="al-case lp-case" data-m="fade-up">
           <div className="al-case-vis al-horizon al-grid al-grid-on-horizon lp-case-vis">
-            <div className="lp-case-top"><Kicker>Case study</Kicker><Kicker>Alpwise BOOK</Kicker></div>
+            <div className="lp-case-top"><Kicker>Case study</Kicker><Kicker>Alpwise book</Kicker></div>
             <BookPreview />
             <span className="lp-case-cap">Schermata di esempio del portale</span>
           </div>
@@ -67,7 +67,7 @@ export function CaseBook() {
                 <div><dt>Cosa</dt><dd>Prenotazioni e portale</dd></div>
                 <div><dt>Dove</dt><dd>book.alpwise.studio</dd></div>
               </dl>
-              <div className="lp-case-cta"><Button variant="outline" size="lg" href="/book" arrow>Scopri BOOK</Button></div>
+              <div className="lp-case-cta"><Button variant="outline" size="lg" href="/book" arrow>Scopri Alpwise book</Button></div>
             </div>
           </div>
         </article>

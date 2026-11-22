@@ -1,6 +1,6 @@
 Alpwise Studio è uno studio di consulenza digitale di tre persone a Gallarate, ai piedi delle Prealpi varesine: siti, gestionali su misura, AI e automazioni per PMI. Prima si ascolta, poi si costruisce. Il sistema resta essenziale: il nero Notte, il bianco, un azzurro di marca e un solo font, Host Grotesk, a peso regolare. La vicinanza alle persone la portano **le foto** (Prealpi, laghi, persone al lavoro) con **il vetro** sopra, e il tono da consulenti. Il gradiente **orizzonte** resta per i visual dei prodotti. Tema principale **Scuro**; **Chiaro** è curato allo stesso livello.
 
-Riferimento visivo: il canvas "Alpwise · consulenza, tema scuro" (brand board, home, contatti, BOOK).
+Riferimento visivo: il canvas "Alpwise · consulenza, tema scuro" (brand board, home, contatti, Alpwise book).
 
 ## Principi
 

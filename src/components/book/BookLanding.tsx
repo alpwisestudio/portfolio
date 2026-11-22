@@ -13,12 +13,12 @@ export function BookHero() {
   return (
     <Scene as="header" className="al-horizon al-grid al-grid-on-horizon bk-hero">
       <div className="al-container bk-hero-body">
-        <div data-m="fade-up" style={d(150)}><Kicker className="bk-on-hz">Alpwise BOOK</Kicker></div>
+        <div data-m="fade-up" style={d(150)}><Kicker className="bk-on-hz">Alpwise book</Kicker></div>
         <h1 style={{ '--delay': '250ms', '--hl-delay': '1100ms' } as CSSProperties}>
           <Words>Le prenotazioni del tuo ristorante, {<span key="hl" className="al-hl-x lp-hl">senza</span>} il telefono che squilla.</Words>
         </h1>
         <p className="bk-hero-lead" data-m="fade-up" style={d(900)}>
-          I clienti prenotano dal tuo sito a qualsiasi ora. Tu vedi tutto in un portale che apri dal telefono, anche durante il servizio. I tavoli li assegna BOOK.
+          I clienti prenotano dal tuo sito a qualsiasi ora. Tu vedi tutto in un portale che apri dal telefono, anche durante il servizio. I tavoli li assegna Alpwise book.
         </p>
         <div className="bk-hero-actions" data-m="fade-up" style={d(1050)}>
           <Button size="lg" href="/contatti">Chiedi una prova sul tuo locale</Button>
@@ -36,10 +36,10 @@ export function BookHero() {
 /** Il problema, detto in una frase che si accende mentre scorri. */
 export function BookIntro() {
   return (
-    <Scene as="section" className="al-section bk-intro" aria-label="Perché BOOK">
+    <Scene as="section" className="al-section bk-intro" aria-label="Perché Alpwise book">
       <div className="al-container">
         <Kicker className="lp-kicker-sub">Perché l&apos;abbiamo fatto</Kicker>
-        <ScrollRead className="lp-statement" text="Il sabato sera il telefono squilla mentre porti i piatti. Con BOOK le prenotazioni arrivano da sole, già al tavolo giusto." />
+        <ScrollRead className="lp-statement" text="Il sabato sera il telefono squilla mentre porti i piatti. Con Alpwise book le prenotazioni arrivano da sole, già al tavolo giusto." />
       </div>
     </Scene>
   );
@@ -63,7 +63,7 @@ export function BookCustomer() {
             </li>
           ))}
         </ol>
-        <p className="bk-note">Schermate vere di BOOK, con dati di esempio.</p>
+        <p className="bk-note">Schermate vere di Alpwise book, con dati di esempio.</p>
       </div>
     </Scene>
   );
@@ -76,10 +76,8 @@ export function BookEmbed() {
       <div className="al-container bk-split">
         <div className="bk-split-text" data-m="fade-up">
           <Kicker className="lp-kicker-sub">Sul tuo sito</Kicker>
-          <h2 id="sito-t" className="bk-h2">Due righe e il modulo è nel tuo sito.</h2>
-          <p className="bk-lead">Si adatta all&apos;altezza della pagina e ai colori chiari o scuri. Se un sito non ce l&apos;hai, c&apos;è la tua pagina su BOOK da mettere su Google, Instagram e WhatsApp.</p>
-          <pre className="bk-code" aria-label="Codice da incollare nel sito"><code>{`<div data-alpwise-book="trattoria-del-lago"></div>
-<script src="https://book.alpwise.studio/embed.js" async></script>`}</code></pre>
+          <h2 id="sito-t" className="bk-h2">Il modulo entra nel tuo sito.</h2>
+          <p className="bk-lead">Lo aggiungiamo noi al sito che hai già: si adatta all&apos;altezza della pagina e ai colori chiari o scuri. Se un sito non ce l&apos;hai, c&apos;è la tua pagina su Alpwise book da mettere su Google, Instagram e WhatsApp.</p>
           <ul className="bk-checks">
             <li>Funziona solo sui domini che ci indichi</li>
             <li>Verifica anti-spam di Cloudflare, senza puzzle da risolvere</li>
@@ -161,7 +159,7 @@ export function BookCalendar() {
             tabs={[
               { id: 'settimana', label: 'Settimana', text: 'Prenotazioni e persone giorno per giorno.', shot: shots.settimana },
               { id: 'mese', label: 'Mese', text: 'Il mese intero, con quelle da confermare.', shot: shots.mese },
-              { id: 'nuova', label: 'Nuova prenotazione', text: 'Telefono o senza prenotazione: il tavolo lo sceglie BOOK.', shot: shots.nuova },
+              { id: 'nuova', label: 'Nuova prenotazione', text: 'Telefono o senza prenotazione: il tavolo lo sceglie Alpwise book.', shot: shots.nuova },
               { id: 'scheda', label: 'Scheda', text: 'Dati, stato e spostamento di orario o tavolo.', shot: shots.dettaglio },
             ]}
           />

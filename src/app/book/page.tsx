@@ -10,8 +10,8 @@ import {
 
 const seo = {
   path: '/book',
-  title: 'BOOK, prenotazioni per ristoranti',
-  description: 'Alpwise BOOK: i clienti prenotano dal tuo sito, tu gestisci tavoli, orari e prenotazioni da un portale che apri dal telefono. Email di conferma e promemoria, dati in Europa.',
+  title: 'Alpwise book, prenotazioni per ristoranti',
+  description: 'Alpwise book: i clienti prenotano dal tuo sito, tu gestisci tavoli, orari e prenotazioni da un portale che apri dal telefono. Email di conferma e promemoria, dati in Europa.',
 };
 export const metadata: Metadata = pageMetadata(seo);
 

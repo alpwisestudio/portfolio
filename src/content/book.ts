@@ -36,14 +36,14 @@ export const steps = [
 ];
 
 export const features = [
-  { title: 'Il tavolo lo sceglie BOOK', text: 'Per ogni gruppo prende il tavolo libero più piccolo che basta. Due persone non occupano più il tavolo da otto.' },
+  { title: 'Il tavolo lo sceglie Alpwise book', text: 'Per ogni gruppo prende il tavolo libero più piccolo che basta. Due persone non occupano più il tavolo da otto.' },
   { title: 'Niente doppie prenotazioni', text: 'Il controllo è nel database: due clienti che prenotano nello stesso istante non prendono lo stesso tavolo.' },
   { title: 'In tempo reale', text: 'Una prenotazione dal sito compare subito nel portale, anche sul telefono di chi è in sala.' },
-  { title: 'Conferma tua o automatica', text: 'Puoi confermare ogni richiesta a mano oppure lasciare che BOOK confermi da solo.' },
+  { title: 'Conferma tua o automatica', text: 'Puoi confermare ogni richiesta a mano oppure lasciare che Alpwise book confermi da solo.' },
 ];
 
 export const faqs = [
-  { q: 'Mi serve un sito nuovo?', a: 'No. Il modulo entra nel sito che hai già con due righe di codice. Se il sito non ce l’hai, c’è la tua pagina su book.alpwise.studio da mettere su Google, Instagram e WhatsApp.' },
+  { q: 'Mi serve un sito nuovo?', a: 'No. Il modulo entra nel sito che hai già: lo aggiungiamo noi. Se il sito non ce l’hai, c’è la tua pagina su book.alpwise.studio da mettere su Google, Instagram e WhatsApp.' },
   { q: 'Lo posso usare dal telefono?', a: 'Sì, il portale è fatto prima di tutto per il telefono: lo apri durante il servizio come un’app, senza installare niente.' },
   { q: 'E le prenotazioni al telefono?', a: 'Le inserisci tu dal portale, anche quelle di chi arriva senza prenotare. Finiscono nello stesso calendario e occupano i tavoli come le altre.' },
   { q: 'Ho più di un locale.', a: 'Va bene: ogni locale ha tavoli, orari e pagina suoi, e tu passi dall’uno all’altro dallo stesso account.' },

@@ -12,7 +12,7 @@ export function SiteFooter() {
         cta={{ href: '/contatti', label: 'Prenota una chiacchierata' }}
         columns={[
           { title: 'Studio', links: [{ label: 'Come lavoriamo', href: '/#metodo' }, { label: 'Chi siamo', href: '/#studio' }, { label: 'Domande', href: '/#domande' }, { label: 'Contatti', href: '/contatti' }] },
-          { title: 'Servizi', links: [{ label: 'Siti', href: '/#servizi' }, { label: 'Gestionali su misura', href: '/#servizi' }, { label: 'AI e automazioni', href: '/#servizi' }, { label: 'BOOK, prenotazioni', href: '/book' }] },
+          { title: 'Servizi', links: [{ label: 'Siti', href: '/#servizi' }, { label: 'Gestionali su misura', href: '/#servizi' }, { label: 'AI e automazioni', href: '/#servizi' }, { label: 'Alpwise book, prenotazioni', href: '/book' }] },
           ...(features.legal ? [{ title: 'Legale', links: [{ label: 'Privacy', href: '/privacy' }, { label: 'Cookie', href: '/cookie' }] }] : []),
         ]}
         legal={legal}

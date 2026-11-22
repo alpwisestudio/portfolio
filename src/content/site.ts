@@ -54,7 +54,7 @@ export const features = {
 export const nav = [
   { label: 'Come lavoriamo', href: '/#metodo' },
   { label: 'Servizi', href: '/#servizi' },
-  { label: 'BOOK', href: '/book' },
+  { label: 'Alpwise book', href: '/book' },
   { label: 'Studio', href: '/#studio' },
   { label: 'Domande', href: '/#domande' },
 ];

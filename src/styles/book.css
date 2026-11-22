@@ -53,8 +53,6 @@
 @media (hover:hover){.bk-step .bk-phone{transition:transform var(--motion-slow) var(--ease-out)}.bk-step:hover .bk-phone{transform:translateY(-8px)}}
 @media (max-width:1023px){.bk-steps{grid-template-columns:repeat(4,minmax(220px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:var(--space-4);margin-inline:-16px;padding-inline:16px}.bk-step{scroll-snap-align:start}}
 
-/* ── Sul tuo sito ── */
-.bk-code{margin:var(--space-8) 0 0;padding:16px 18px;background:var(--surface-sunken);border:1px solid var(--line);font:400 13px/22px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text);overflow-x:auto;white-space:pre}
 
 /* ── Portale: funzioni ── */
 .bk-features{list-style:none;margin:var(--space-12) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}

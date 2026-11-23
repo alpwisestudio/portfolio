@@ -29,6 +29,42 @@ export const shots = {
   emailLocale: phone('email-locale', 'Email al locale: nuova prenotazione dal sito'),
 };
 
+// Il giro nel portale sotto l'apertura: la finestra si allarga mentre scorri, poi su ogni schermata si accendono
+// dei punti numerati sopra le parti vere del portale. x e y in percentuale della schermata (16:10); `side` è dove
+// sta l'etichetta rispetto al punto.
+export type TourPoint = { x: number; y: number; side: 'left' | 'right'; title: string; text: string };
+export const tour: { label: string; shot: Shot; points: TourPoint[] }[] = [
+  {
+    label: 'Oggi', shot: shots.oggi,
+    points: [
+      { x: 43, y: 31, side: 'right', title: 'Il giorno in quattro numeri', text: 'Persone, prenotazioni, da confermare e tavoli occupati.' },
+      { x: 80, y: 52, side: 'left', title: 'La settimana sotto mano', text: 'Le persone di ogni giorno. Il quadratino segna chi è da confermare.' },
+      { x: 52, y: 90, side: 'right', title: 'Ogni prenotazione con il suo stato', text: 'Tavolo già assegnato, telefono da toccare, annulli con un clic.' },
+      { x: 83, y: 7, side: 'left', title: 'Anche quelle al telefono', text: 'Le inserisci tu e finiscono nello stesso calendario.' },
+    ],
+  },
+  {
+    label: 'Settimana', shot: shots.settimana,
+    points: [
+      { x: 68, y: 76, side: 'left', title: 'Tutta la settimana', text: 'Prenotazioni, persone e quante sono da confermare, giorno per giorno.' },
+    ],
+  },
+  {
+    label: 'Nuova prenotazione', shot: shots.nuova,
+    points: [
+      { x: 48, y: 45, side: 'right', title: 'Telefono o senza prenotazione', text: 'Chi chiama o entra senza prenotare occupa i tavoli come gli altri.' },
+      { x: 57, y: 17, side: 'right', title: 'Il tavolo lo sceglie Alpwise book', text: 'Il più piccolo libero che basta.' },
+    ],
+  },
+  {
+    label: 'Scheda', shot: shots.dettaglio,
+    points: [
+      { x: 45, y: 53, side: 'right', title: 'La scheda del cliente', text: 'Servizio, tavolo, origine e recapiti in un posto solo.' },
+      { x: 90, y: 90, side: 'left', title: 'Annulli quando serve', text: 'Il tavolo torna libero per altri clienti.' },
+    ],
+  },
+];
+
 export const steps = [
   { title: 'Quante persone', shot: shots.mPersone },
   { title: 'Che orario', shot: shots.mOrario },

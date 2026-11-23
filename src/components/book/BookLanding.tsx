@@ -10,7 +10,7 @@ import { BrowserShot, PhoneShot, ShotTabs } from './Shots';
 const PORTAL = 'book.alpwise.studio/portale';
 const PAGE = 'book.alpwise.studio/p/trattoria-esempio';
 
-/** Apertura: foto del lago di Varese all'imbrunire con il velo Notte e la griglia, titolo e, sotto, il portale da computer con il telefono davanti. */
+/** Apertura: foto del lago di Varese all'imbrunire con il velo Notte e la griglia, titolo e bottoni. Il portale sotto è in BookTour. */
 export function BookHero() {
   return (
     <Scene as="header" className="al-photo bk-hero">
@@ -25,12 +25,8 @@ export function BookHero() {
         </p>
         <div className="bk-hero-actions" data-m="fade-up" style={d(1050)}>
           <Button size="lg" href="/contatti">Chiedi una prova sul tuo locale</Button>
-          <Button size="lg" variant="glass" href="#come">Guarda come funziona</Button>
+          <Button size="lg" variant="glass" href="#portale">Guarda come funziona</Button>
         </div>
-      </div>
-      <div className="al-container bk-hero-vis" data-m="fade-up" style={d(1200)}>
-        <BrowserShot shot={shots.oggi} url={PORTAL} priority className="bk-hero-desk" />
-        <PhoneShot shot={shots.mOggi} priority className="bk-hero-phone" />
       </div>
     </Scene>
   );
@@ -95,17 +91,16 @@ export function BookEmbed() {
   );
 }
 
-/** Per te: la vista del giorno, punto per punto. */
+/** Cosa fa da solo Alpwise book, in quattro punti. Le schermate del portale sono in BookTour. */
 export function BookPortal() {
   return (
     <Scene as="section" className="al-section bk-portal" aria-labelledby="portale-t">
       <div className="al-container">
         <div className="al-head">
-          <Kicker>Per te, durante il servizio</Kicker>
-          <h2 id="portale-t">Il servizio di oggi, in una pagina.</h2>
-          <p>Pranzo e cena separati, persone e tavoli occupati, chi è da confermare. Confermi, rifiuti o segni chi non si è presentato con un tocco.</p>
+          <Kicker>Dietro le quinte</Kicker>
+          <h2 id="portale-t">Il lavoro noioso lo fa Alpwise book.</h2>
+          <p>Tavoli, doppie prenotazioni e conferme: ci pensa il sistema, tu segui la sala.</p>
         </div>
-        <div data-m="fade-up"><BrowserShot shot={shots.oggiChiaro} url={PORTAL} /></div>
         <ul className="bk-features" data-m="stagger">
           {features.map((f, i) => (
             <li key={f.title} style={{ '--i': i } as CSSProperties}>
@@ -160,33 +155,6 @@ export function BookStudio() {
             <p>Alpwise book l&apos;abbiamo costruito noi, a Gallarate. Se qualcosa non va durante il servizio, chiami una persona, non un call center.</p>
             <div><Button variant="glass" size="lg" href="/#studio" arrow>Conosci lo studio</Button></div>
           </Glass>
-        </div>
-      </div>
-    </Scene>
-  );
-}
-
-/** Calendario e prenotazioni inserite a mano, con le linguette. */
-export function BookCalendar() {
-  return (
-    <Scene as="section" className="al-section bk-calendar" aria-labelledby="calendario-t">
-      <div className="al-container">
-        <div className="al-head">
-          <Kicker>Calendario e telefono</Kicker>
-          <h2 id="calendario-t">Tutte le prenotazioni, da qualsiasi parte arrivino.</h2>
-          <p>Quelle al telefono e quelle di chi entra senza prenotare le inserisci tu: occupano i tavoli come le altre.</p>
-        </div>
-        <div data-m="fade-up">
-          <ShotTabs
-            label="Schermate del calendario"
-            url={PORTAL}
-            tabs={[
-              { id: 'settimana', label: 'Settimana', text: 'Prenotazioni e persone giorno per giorno.', shot: shots.settimana },
-              { id: 'mese', label: 'Mese', text: 'Il mese intero, con quelle da confermare.', shot: shots.mese },
-              { id: 'nuova', label: 'Nuova prenotazione', text: 'Telefono o senza prenotazione: il tavolo lo sceglie Alpwise book.', shot: shots.nuova },
-              { id: 'scheda', label: 'Scheda', text: 'Dati, stato e spostamento di orario o tavolo.', shot: shots.dettaglio },
-            ]}
-          />
         </div>
       </div>
     </Scene>

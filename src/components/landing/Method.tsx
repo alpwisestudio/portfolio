@@ -3,12 +3,16 @@ import { Head } from '@alpwisestudio/ui';
 import { Scene } from '@/components/motion';
 import { steps } from '@/content/site';
 
-/** Come lavoriamo: tre passi in celle che condividono il bordo, senza foto. */
-export function Method() {
+/** Come lavoriamo: tre passi in celle che condividono il bordo, senza foto. Le pagine dei servizi cambiano etichetta e titolo. */
+export function Method({
+  label = 'Come lavoriamo',
+  title = 'Un metodo da consulenti, non da fornitori.',
+  lead = 'Niente pacchetti già pronti. Ogni progetto parte da una chiacchierata.',
+}: { label?: string; title?: string; lead?: string }) {
   return (
     <Scene as="section" id="metodo" className="al-section al-anchor lp-method">
       <div className="al-container">
-        <Head label="Come lavoriamo" title="Un metodo da consulenti, non da fornitori." lead="Niente pacchetti già pronti. Ogni progetto parte da una chiacchierata." />
+        <Head label={label} title={title} lead={lead} />
         <ol className="lp-steps" data-m="stagger">
           {steps.map((s, i) => (
             <li key={s.title} className="lp-step" style={{ '--i': i } as CSSProperties}>

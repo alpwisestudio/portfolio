@@ -104,6 +104,10 @@
 
 /* ── Chiusura ── */
 .bk-cta{color:var(--white)}
+/* Chiusura su foto: alta, testo al centro, il velo sfuma nel nero del footer (niente fascia azzurra). */
+.bk-cta.al-photo{min-height:max(640px,85svh);display:flex;flex-direction:column;justify-content:center}
+.bk-cta.al-photo .bk-cta-body{width:100%}
+@media (max-width:767px){.bk-cta.al-photo{min-height:560px}}
 .bk-cta-body{display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--space-32) var(--space-8)}
 .bk-cta h2{margin:0;font:400 clamp(44px,6vw,88px)/1 var(--font-sans);letter-spacing:-.045em;text-wrap:balance}
 .bk-cta p{margin:var(--space-6) 0 0;font:300 20px/30px var(--font-sans);color:rgba(255,255,255,.86);max-width:44ch}

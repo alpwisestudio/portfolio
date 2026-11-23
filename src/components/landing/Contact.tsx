@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Image from 'next/image';
 import { Button, Checkbox, Field, Glass, Input, Kicker, Toast } from '@alpwisestudio/ui';
 import { Scene } from '@/components/motion';
-import { contact, features, needs, photos } from '@/content/site';
+import { contact, features, needs, photos, services, type Service } from '@/content/site';
 
 type Errors = Partial<Record<'name' | 'email', string>>;
 type Status = 'idle' | 'sending' | 'sent' | 'error' | 'off' | 'limit';
@@ -18,7 +18,14 @@ export function Contact() {
   const [status, setStatus] = useState<Status>('idle');
   // Quando il modulo è comparso: il server scarta gli invii troppo rapidi per essere di una persona.
   const startedAt = useRef(0);
-  useEffect(() => { startedAt.current = Date.now(); }, []);
+  // Arrivi da una pagina dei servizi (/contatti?servizio=siti): la sua voce è già spuntata e il titolo lo dice.
+  // Letto dopo il montaggio, così la pagina resta statica.
+  const [from, setFrom] = useState<Service>();
+  useEffect(() => {
+    startedAt.current = Date.now();
+    const slug = new URLSearchParams(location.search).get('servizio');
+    setFrom(services.find((s) => s.slug === slug));
+  }, []);
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -79,6 +86,7 @@ export function Contact() {
                 <div className="lp-form-head">
                   <Kicker>Oppure lascia due righe</Kicker>
                   <h2>Ti richiamiamo noi.</h2>
+                  {from && <p className="lp-contact-note" aria-live="polite">Arrivi dalla pagina {from.name}: l’abbiamo già segnato qui sotto. Se ti serve altro, aggiungilo.</p>}
                 </div>
                 {/* Trappola per i bot: invisibile e fuori dal tab, le persone la lasciano vuota. */}
                 <div className="sr-only" aria-hidden="true"><label>Sito web<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
@@ -90,11 +98,11 @@ export function Contact() {
                   <Field label="Email" required error={errors.email}><Input name="email" type="email" autoComplete="email" /></Field>
                   <Field label={<>Telefono <span className="lp-optional">facoltativo</span></>}><Input name="phone" type="tel" autoComplete="tel" /></Field>
                 </div>
-                <fieldset className="lp-needs">
+                <fieldset className="lp-needs" key={from?.slug ?? 'none'}>
                   <legend className="al-label">Ti serve una mano con</legend>
                   <div className="lp-chips">
                     {needs.map((n) => (
-                      <label key={n} className="lp-chip"><input type="checkbox" name="service" value={n} /> {n}</label>
+                      <label key={n} className="lp-chip"><input type="checkbox" name="service" value={n} defaultChecked={n === from?.need} /> {n}</label>
                     ))}
                   </div>
                 </fieldset>

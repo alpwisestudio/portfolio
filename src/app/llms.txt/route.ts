@@ -1,4 +1,4 @@
-import { contact, faqs, features, services, site, siteUrl, steps } from '@/content/site';
+import { contact, faqs, features, serviceHref, services, site, siteUrl, steps } from '@/content/site';
 
 // /llms.txt: riassunto in Markdown per gli assistenti AI (https://llmstxt.org). Generato dagli stessi testi del sito.
 export const dynamic = 'force-static';
@@ -13,7 +13,7 @@ export function GET() {
     '',
     '## Servizi',
     '',
-    ...services.map((s) => `- **${s.name}**: ${s.lead} ${s.text} (${s.points.join(', ')})`),
+    ...services.map((s) => `- **[${s.name}](${siteUrl}${serviceHref(s)})**: ${s.lead} ${s.text} (${s.points.map((p) => p.title).join(', ')})`),
     '',
     '## Come lavoriamo',
     '',
@@ -34,6 +34,8 @@ export function GET() {
     '## Pagine',
     '',
     `- [Home](${siteUrl}/): come lavoriamo, servizi, case study, studio e domande`,
+    ...services.map((s) => `- [${s.name}](${siteUrl}${serviceHref(s)}): ${s.page.seo.description}`),
+    `- [Alpwise book](${siteUrl}/book): prenotazioni online per ristoranti, il gestionale costruito dallo studio`,
     `- [Contatti](${siteUrl}/contatti): raccontaci il tuo progetto`,
     ...(features.legal ? [`- [Privacy](${siteUrl}/privacy)`, `- [Cookie](${siteUrl}/cookie)`] : []),
     '',

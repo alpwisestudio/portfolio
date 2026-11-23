@@ -1,17 +1,20 @@
 import type { CSSProperties } from 'react';
-import { Accordion, Button, Head, Kicker } from '@alpwisestudio/ui';
+import Image from 'next/image';
+import { Accordion, Button, Glass, Head, Kicker } from '@alpwisestudio/ui';
 import { Scene, ScrollRead, Words } from '@/components/motion';
 import { d } from '@/components/motion/delay';
 import { faqs, features, shots, steps } from '@/content/book';
+import { photos } from '@/content/site';
 import { BrowserShot, PhoneShot, ShotTabs } from './Shots';
 
 const PORTAL = 'book.alpwise.studio/portale';
 const PAGE = 'book.alpwise.studio/p/trattoria-esempio';
 
-/** Apertura: orizzonte con la griglia, titolo e, sotto, il portale da computer con il telefono davanti. */
+/** Apertura: foto del lago di Varese all'imbrunire con il velo Notte e la griglia, titolo e, sotto, il portale da computer con il telefono davanti. */
 export function BookHero() {
   return (
-    <Scene as="header" className="al-horizon al-grid al-grid-on-horizon bk-hero">
+    <Scene as="header" className="al-photo bk-hero">
+      <Image className="al-photo-img" src={photos.varese.src} alt="" fill priority sizes="100vw" />
       <div className="al-container bk-hero-body">
         <div data-m="fade-up" style={d(150)}><Kicker className="bk-on-hz">Alpwise book</Kicker></div>
         <h1 style={{ '--delay': '250ms', '--hl-delay': '1100ms' } as CSSProperties}>
@@ -142,6 +145,27 @@ export function BookMobile() {
   );
 }
 
+/** Pausa su foto a metà pagina: chi c'è dietro Alpwise book. */
+export function BookStudio() {
+  return (
+    <Scene as="section" className="al-photo al-photo-mid lp-studio" aria-labelledby="book-studio-t">
+      <Image className="al-photo-img" src={photos.borgo.src} alt={photos.borgo.alt} fill sizes="100vw" />
+      <div className="al-container lp-studio-body">
+        <div className="lp-studio-title">
+          <Kicker className="lp-studio-kicker">Chi c&apos;è dietro</Kicker>
+          <h2 id="book-studio-t"><Words>Fatto da uno studio piccolo.</Words><br /><span className="lp-dim-photo"><Words start={5}>Ti risponde chi l&apos;ha costruito.</Words></span></h2>
+        </div>
+        <div data-m="fade-up" style={d(250)}>
+          <Glass className="lp-studio-glass">
+            <p>Alpwise book l&apos;abbiamo costruito noi, a Gallarate. Se qualcosa non va durante il servizio, chiami una persona, non un call center.</p>
+            <div><Button variant="glass" size="lg" href="/#studio" arrow>Conosci lo studio</Button></div>
+          </Glass>
+        </div>
+      </div>
+    </Scene>
+  );
+}
+
 /** Calendario e prenotazioni inserite a mano, con le linguette. */
 export function BookCalendar() {
   return (
@@ -255,7 +279,8 @@ export function BookFaq() {
 
 export function BookCta() {
   return (
-    <Scene as="section" className="al-horizon al-grid al-grid-on-horizon bk-cta" aria-labelledby="book-cta-t">
+    <Scene as="section" className="al-photo al-photo-mid bk-cta" aria-labelledby="book-cta-t">
+      <Image className="al-photo-img" src={photos.paese.src} alt="" fill sizes="100vw" />
       <div className="al-container bk-cta-body">
         <h2 id="book-cta-t"><Words>Proviamolo sul tuo locale.</Words></h2>
         <p data-m="fade-up" style={d(400)}>Ci racconti tavoli e orari, e ti mostriamo come prenoterebbero i tuoi clienti. Trenta minuti, senza impegno.</p>

@@ -41,6 +41,13 @@ Riferimento visivo: il canvas "Alpwise · consulenza, tema scuro" (brand board, 
 - Il bottone secondario sopra le foto è `glass`; il primario resta `primary`.
 - Una foto non va sotto testo lungo: titolo, frase, al massimo un pannello.
 
+## Il logo
+
+- Il lettering "Alpwise" è quello originale (tracciati dagli SVG ufficiali): non si ridisegna mai con un font.
+- Accanto va il nome, sempre con la stessa regola: **STUDIO** per lo studio, **BOOK**, **STAFF** e **QUOTA** per i prodotti. Sono le proporzioni del logo di staff: Host Grotesk 500, maiuscolo, spaziatura `.12em`, alto 30/84 del lettering (minimo 10px), a 24/84 di distanza, appoggiato sulla linea di base del lettering.
+- Componenti: `<Logo />` è "Alpwise STUDIO" (footer, file `wordmark-*.svg`), `<Logo lockup="nav" />` solo "Alpwise" (navbar), `<Logo lockup="mark" />` solo la A, `<ProductLogo product="Book" />` per i prodotti.
+- Bianco su scuro, nero su chiaro, mai azzurro.
+
 ## L'orizzonte
 
 ```css
@@ -48,7 +55,8 @@ Riferimento visivo: il canvas "Alpwise · consulenza, tema scuro" (brand board, 
 .al-grid::before  { /* 12 colonne hairline, sfumano verso il basso */ }
 ```
 
-- `horizon` sale dal nero al blu notte fino all'azzurro di marca (`sky-700`), senza fascia bianca. Solo il gradiente lineare: niente arco, cerchi o bagliori radiali sopra.
+- `horizon` sale dal nero al blu notte fino all'azzurro di marca (`sky-700`), senza fascia bianca. Nelle pagine è solo il gradiente lineare: niente arco né cerchi sopra.
+- Unica eccezione, il **bagliore** (`--horizon-glow`, classe `al-glow`): la luce dell'orizzonte che sale dal fondo, ellittica, su fondo Notte con la griglia sopra. Solo nel pannello di accesso dei prodotti (la metà destra della login di Alpwise book e staff), con il logo bianco nella metà alta. Il centro schiarisce fino a `sky-200`: niente testo nella metà bassa. Il pannello non si stacca dal form: bagliore e griglia sfumano verso il bordo, e sul bordo non c'è nessuna linea della griglia; in tema scuro le due metà sono un'unica superficie Notte.
 - È identico in Scuro e in Chiaro: è la firma del marchio, non un colore d'interfaccia.
 - Il testo è sempre bianco, a ogni altezza: il punto più chiaro è `sky-700` in fondo (5.8:1). Mai testo nero sull'orizzonte.
 - Si usa per i visual dei prodotti e dei case study (dietro le schermate). Le aperture delle pagine usano le foto. Mai su card, bottoni o fondi di sezione interi.

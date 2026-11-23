@@ -34,7 +34,7 @@ export default async function OpengraphImage() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '56px 72px', width: '100%' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <img src={`data:image/svg+xml;base64,${Buffer.from(wordmark).toString('base64')}`} width={250} height={60} alt="" />
+            <img src={`data:image/svg+xml;base64,${Buffer.from(wordmark).toString('base64')}`} width={279} height={51} alt="" />
             <div style={{ fontSize: 24, opacity: 0.86 }}>{contact.address}</div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>

@@ -1,8 +1,9 @@
-// Contenuti della pagina /book. Gli screenshot (public/book) vengono dal portale vero, con dati di esempio inventati.
+// Contenuti della pagina /book. Gli screenshot (public/book) vengono dal portale vero, con dati di esempio inventati,
+// a 4x: li rifà scripts/portfolio-shots.mjs di alpwise-book.
 import type { Shot } from '@/components/book/Shots';
 
-const desk = (name: string, alt: string): Shot => ({ src: `/book/${name}.webp`, alt, w: 2160, h: 1350 });
-const phone = (name: string, alt: string, h = 1688): Shot => ({ src: `/book/${name}.webp`, alt, w: 780, h });
+const desk = (name: string, alt: string): Shot => ({ src: `/book/${name}.webp`, alt, w: 4320, h: 2700 });
+const phone = (name: string, alt: string, h = 3376): Shot => ({ src: `/book/${name}.webp`, alt, w: 1560, h });
 
 export const shots = {
   oggi: desk('portale-oggi', 'Portale, vista del giorno: settimana con le persone per giorno, poi pranzo con sei prenotazioni, stato e azioni'),
@@ -15,7 +16,7 @@ export const shots = {
   tavoli: desk('impostazioni-tavoli', 'Tavoli: posti minimi e massimi e zona di ogni tavolo'),
   chiusure: desk('impostazioni-chiusure', 'Chiusure: giorni chiusi e orari ridotti, come Natale e San Silvestro'),
   team: desk('impostazioni-team', 'Team: titolare e staff, con l’invito per una nuova persona'),
-  widgetDesk: { src: '/book/widget-orari.webp', alt: 'Pagina di prenotazione da computer: scelta dell’orario tra pranzo e cena', w: 1480, h: 1110 },
+  widgetDesk: { src: '/book/widget-orari.webp', alt: 'Pagina di prenotazione da computer: scelta dell’orario tra pranzo e cena', w: 2960, h: 2220 },
   oggiChiaro: desk('portale-oggi-chiaro', 'Portale in tema chiaro, vista del giorno: pranzo di sabato con stato e azioni di ogni prenotazione'),
   mOggi: phone('m-portale-oggi', 'Portale dal telefono, tema scuro: il pranzo di sabato con le prenotazioni'),
   mOggiChiaro: phone('m-portale-oggi-chiaro', 'Portale dal telefono, tema chiaro'),
@@ -24,7 +25,7 @@ export const shots = {
   mOrario: phone('m-widget-orario', 'Prenotazione, passo 3: orari liberi per pranzo e cena'),
   mDati: phone('m-widget-dati', 'Prenotazione, passo 4: nome, email, telefono, note e consenso privacy'),
   mFatto: phone('m-widget-fatto', 'Prenotazione confermata, con il link per annullare'),
-  emailCliente: phone('email-cliente', 'Email al cliente: prenotazione confermata, con il link per vederla o annullarla', 2060),
+  emailCliente: phone('email-cliente', 'Email al cliente: prenotazione confermata, con il link per vederla o annullarla', 4120),
   emailLocale: phone('email-locale', 'Email al locale: nuova prenotazione dal sito'),
 };
 

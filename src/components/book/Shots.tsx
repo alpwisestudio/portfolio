@@ -6,12 +6,15 @@ import { cx } from '@alpwisestudio/ui';
 
 export type Shot = { src: string; alt: string; w: number; h: number };
 
+/** Le schermate hanno testi piccoli: qualità più alta del default (75), ammessa in next.config.ts. */
+const SHOT_QUALITY = 90;
+
 /** Schermata desktop in una finestra del browser: barra con l'indirizzo, poi lo screenshot. */
 export function BrowserShot({ shot, url, priority, className }: { shot: Shot; url: string; priority?: boolean; className?: string }) {
   return (
     <figure className={cx('bk-browser', className)}>
       <div className="bk-browser-bar" aria-hidden="true"><i /><i /><i /><span>{url}</span></div>
-      <Image src={shot.src} alt={shot.alt} width={shot.w} height={shot.h} priority={priority} sizes="(max-width: 860px) 100vw, 70vw" />
+      <Image src={shot.src} alt={shot.alt} width={shot.w} height={shot.h} priority={priority} quality={SHOT_QUALITY} sizes="(max-width: 860px) 100vw, 70vw" />
     </figure>
   );
 }
@@ -20,7 +23,7 @@ export function BrowserShot({ shot, url, priority, className }: { shot: Shot; ur
 export function PhoneShot({ shot, priority, className }: { shot: Shot; priority?: boolean; className?: string }) {
   return (
     <figure className={cx('bk-phone', className)}>
-      <Image src={shot.src} alt={shot.alt} width={shot.w} height={shot.h} priority={priority} sizes="(max-width: 860px) 70vw, 320px" />
+      <Image src={shot.src} alt={shot.alt} width={shot.w} height={shot.h} priority={priority} quality={SHOT_QUALITY} sizes="(max-width: 860px) 70vw, 320px" />
     </figure>
   );
 }

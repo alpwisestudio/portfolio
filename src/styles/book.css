@@ -13,22 +13,85 @@
 
 /* ── Apertura ── */
 .bk-hero{margin-top:calc(-1 * var(--nav-h));padding-top:var(--nav-h);color:var(--white);overflow:hidden}
-.bk-hero-body{display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--space-20) var(--space-8) var(--space-16)}
+.bk-hero-body{display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--space-20) var(--space-8) var(--space-32)}
 .bk-on-hz.al-kicker,.bk-on-hz{color:rgba(255,255,255,.86)}
 .bk-hero h1{margin:var(--space-6) 0 0;font:400 clamp(48px,6.4vw,92px)/1 var(--font-sans);letter-spacing:-.045em;max-width:17ch;text-wrap:balance}
 .bk-hero-lead{margin:var(--space-6) 0 0;font:300 20px/30px var(--font-sans);color:rgba(255,255,255,.86);max-width:52ch;text-wrap:pretty}
 .bk-hero-actions{display:flex;flex-wrap:wrap;gap:var(--space-2);justify-content:center;margin-top:var(--space-8)}
-.bk-hero-vis{position:relative;padding:0 var(--space-8) var(--space-20);max-width:1200px}
-.bk-hero-desk{width:88%;border-color:rgba(255,255,255,.18)}
-.bk-hero-phone{position:absolute;right:var(--space-8);bottom:var(--space-8);width:min(24%,280px)}
 @media (max-width:767px){
-  .bk-hero-body{padding:var(--space-16) 16px var(--space-12)}
+  .bk-hero-body{padding:var(--space-16) 16px calc(var(--space-16) + var(--space-12))}
   .bk-hero h1{font-size:42px;line-height:44px}
   .bk-hero-lead{font-size:18px;line-height:28px}
   .bk-hero-actions{flex-direction:column;align-items:stretch;width:100%;max-width:340px}
-  .bk-hero-vis{padding:0 16px var(--space-16)}
-  .bk-hero-desk{width:100%}
-  .bk-hero-phone{position:relative;right:auto;bottom:auto;width:62%;margin:-90px auto 0}
+}
+
+@property --px{syntax:'<percentage>';inherits:true;initial-value:50%}
+@property --py{syntax:'<percentage>';inherits:true;initial-value:50%}
+/* ── Il giro nel portale (BookTour) ──
+   Ferma (telefono, tablet, meno movimento, senza JS): la finestra del portale sale sopra la foto con il telefono davanti,
+   poi ogni schermata con i suoi punti numerati e le spiegazioni. Da computer con il movimento: media query sotto. */
+.bk-tour{position:relative;z-index:2;margin-top:calc(var(--space-20) * -1)}
+.bk-tour-stage{position:relative;max-width:1200px;margin:0 auto;padding:0 var(--space-8)}
+.bk-tour-frame{width:88%;border-color:rgba(255,255,255,.18)}
+.bk-tour-screens{position:relative;aspect-ratio:16/10}
+.bk-tour-screen{position:absolute;inset:0}
+.bk-tour-screen:not(.is-on){display:none}
+.bk-tour-shot{object-fit:cover;object-position:top}
+.bk-tour-phone{position:absolute;right:var(--space-8);bottom:calc(var(--space-8) * -1);width:min(24%,280px)}
+/* Punti: quadratino azzurro numerato sopra la parte del portale; l'etichetta compare accanto solo sul punto attivo. */
+.bk-pt{position:absolute;z-index:2;width:0;height:0;opacity:0;transition:opacity var(--motion-base) var(--ease-out)}
+.bk-pt.is-shown{opacity:1}
+.bk-pt-n{transform:scale(0);transition:transform 500ms cubic-bezier(.34,1.56,.64,1)}
+.bk-pt.is-shown .bk-pt-n{transform:none}
+.bk-pt-n{position:absolute;left:-12px;top:-12px;display:grid;place-items:center;width:24px;height:24px;background:var(--primary);color:var(--on-primary);border-radius:var(--radius-xs);font:500 13px/1 var(--font-sans);font-variant-numeric:tabular-nums;box-shadow:0 0 0 4px rgba(6,8,11,.45)}
+.bk-pt-card{position:absolute;top:-12px;width:max-content;max-width:280px;padding:var(--space-3) var(--space-4);background:color-mix(in srgb,var(--night) 90%,transparent);border:1px solid var(--line-strong);box-shadow:var(--shadow-overlay);color:var(--grey-300);font:400 14px/20px var(--font-sans);opacity:0;pointer-events:none;transition:opacity var(--motion-base) var(--ease-out),transform var(--motion-base) var(--ease-out)}
+.bk-pt-card b{display:block;margin-bottom:var(--space-1);font:400 17px/22px var(--font-sans);letter-spacing:-.01em;color:var(--white)}
+.bk-pt.is-right .bk-pt-card{left:20px;transform:translateX(-8px)}
+.bk-pt.is-left .bk-pt-card{right:20px;transform:translateX(8px)}
+.bk-pt.is-up .bk-pt-card{top:auto;bottom:-12px}
+.bk-pt.is-active .bk-pt-card{opacity:1;transform:none}
+.bk-pt.is-active .bk-pt-n{animation:bk-pt-ring 1600ms var(--ease-out) infinite}
+@keyframes bk-pt-ring{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--sky-400) 70%,transparent)}100%{box-shadow:0 0 0 12px transparent}}
+/* Versione ferma: schermata con i punti e, accanto, le spiegazioni numerate. */
+.bk-tour-static{padding-top:var(--space-32)}
+.bk-tour-block{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:var(--space-8);align-items:start;margin-top:var(--space-12)}
+.bk-tour-static .bk-pt{opacity:1}
+.bk-tour-notes{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.bk-tour-notes li{padding:var(--space-4) 0;border-bottom:1px solid var(--line)}
+.bk-tour-notes h3{margin:var(--space-1) 0;font:400 20px/26px var(--font-sans);letter-spacing:-.01em;color:var(--text)}
+.bk-tour-notes p{margin:0;font-size:15px;line-height:24px;color:var(--text-muted)}
+@media (max-width:1023px){.bk-tour-block{grid-template-columns:1fr;gap:var(--space-4)}}
+@media (max-width:767px){
+  .bk-tour{margin-top:calc(var(--space-16) * -1)}
+  .bk-tour-stage{padding:0 16px}
+  .bk-tour-frame{width:100%}
+  .bk-tour-phone{position:relative;right:auto;bottom:auto;width:62%;margin:calc(var(--space-20) * -1) auto 0}
+  .bk-tour-static{padding-top:var(--space-20)}
+  .bk-pt-n{left:-9px;top:-9px;width:18px;height:18px;font-size:11px;box-shadow:0 0 0 3px rgba(6,8,11,.45)}
+}
+/* Da computer: la sezione è alta (--n punti) e il contenuto resta fermo sullo schermo. La finestra sale dalla foto
+   e si allarga dritta (--z da BookTour) fino alla larghezza del contenuto, poi i punti si accendono uno alla volta. */
+@media (min-width:1024px) and (prefers-reduced-motion:no-preference){
+  .bk-hero-body{padding-bottom:calc(30svh + var(--space-16))}
+  .bk-tour{--z:0;height:calc(100svh * (1.5 + var(--n) * .6));margin-top:-30svh;background:linear-gradient(transparent 0 30svh,var(--bg) 30svh)}
+  .bk-tour-sticky{position:sticky;top:0;height:100svh;display:grid;place-items:center;padding-top:var(--nav-h)}
+  .bk-tour-stage{max-width:none;padding:0;width:min(1360px,calc(100vw - 2 * var(--space-8)),calc((100svh - var(--nav-h) - var(--space-8) - 36px) * 1.6));transform:translateY(calc((1 - var(--z)) * 6svh)) scale(calc(.7 + .3 * var(--z)))}
+  .bk-tour-frame{width:100%;border-color:rgba(255,255,255,.18);overflow:visible}
+  .bk-tour-screens{overflow:hidden}
+  .bk-tour-screen:not(.is-on){display:block}
+  /* Cambio di schermata: quella nuova entra da destra, quella vecchia esce a sinistra. */
+  .bk-tour-screen{opacity:0;transform:translateX(-4%) scale(.96);transform-origin:var(--px) var(--py);transition:opacity 600ms var(--ease-out),transform 900ms var(--ease-out),--px 900ms var(--ease-out),--py 900ms var(--ease-out)}
+  .bk-tour-screen.is-on{opacity:1;transform:none}
+  .bk-tour-screen.is-on ~ .bk-tour-screen{transform:translateX(4%) scale(.96)}
+  /* Sul punto attivo: la schermata si avvicina e il resto si scurisce, come una luce che lo segue. */
+  .bk-tour-screen.is-focus{transform:scale(1.14)}
+  .bk-tour-screen::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;background:radial-gradient(circle at var(--px) var(--py),transparent 0 9%,rgba(6,8,11,.6) 32%);transition:opacity 600ms var(--ease-out)}
+  .bk-tour-screen.is-focus::after{opacity:1}
+  .bk-pt-card{transform:translateY(6px) scale(.96);filter:blur(4px);transition:opacity 400ms var(--ease-out),transform 500ms cubic-bezier(.34,1.56,.64,1),filter 400ms var(--ease-out)}
+  .bk-pt.is-right .bk-pt-card,.bk-pt.is-left .bk-pt-card{transform:translateY(6px) scale(.96)}
+  .bk-pt.is-active .bk-pt-card{filter:none;transform:none;transition-delay:250ms}
+  .bk-tour-phone{right:calc(var(--space-8) * -1);bottom:calc(var(--space-8) * -1);width:22%;opacity:calc(1 - var(--z) * 3);transform:translateY(calc(var(--z) * 30%))}
+  .bk-tour-static{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 }
 
 /* ── Testi comuni ── */

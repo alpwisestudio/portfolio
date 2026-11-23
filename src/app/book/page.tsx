@@ -5,8 +5,9 @@ import { pageMetadata } from '@/components/seo/meta';
 import { SiteFooter } from '@/components/landing/SiteFooter';
 import { SiteNav } from '@/components/landing/SiteNav';
 import {
-  BookCalendar, BookCta, BookCustomer, BookEmails, BookEmbed, BookFaq, BookHero, BookIntro, BookMobile, BookPortal, BookSettings, BookStudio, BookTrust,
+  BookCta, BookCustomer, BookEmails, BookEmbed, BookFaq, BookHero, BookIntro, BookMobile, BookPortal, BookSettings, BookStudio, BookTrust,
 } from '@/components/book/BookLanding';
+import { BookTour } from '@/components/book/BookTour';
 
 const seo = {
   path: '/book',
@@ -22,13 +23,13 @@ export default function BookPage() {
       <SiteNav />
       <main>
         <BookHero />
+        <BookTour />
         <BookIntro />
         <BookCustomer />
         <BookEmbed />
         <BookPortal />
         <BookMobile />
         <BookStudio />
-        <BookCalendar />
         <BookSettings />
         <BookEmails />
         <BookTrust />

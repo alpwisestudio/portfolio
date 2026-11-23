@@ -1,4 +1,4 @@
-import { contact, services, site, siteUrl } from '@/content/site';
+import { contact, serviceHref, services, site, siteUrl, type Service } from '@/content/site';
 
 type Json = Record<string, unknown>;
 
@@ -47,7 +47,7 @@ export function organizationLd(): Json {
       ...(contact.email && { email: contact.email }),
       ...(contact.phone && { telephone: contact.phone }),
     },
-    knowsAbout: services.flatMap((s) => [s.name, ...s.points]),
+    knowsAbout: services.flatMap((s) => [s.name, ...s.points.map((p) => p.title)]),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Servizi',
@@ -58,6 +58,7 @@ export function organizationLd(): Json {
           name: s.name,
           description: `${s.lead} ${s.text}`,
           serviceType: s.name,
+          url: `${siteUrl}${serviceHref(s)}`,
           provider: { '@id': orgId },
           areaServed: site.areaServed.map((name) => ({ '@type': 'Place', name })),
         },
@@ -103,4 +104,36 @@ export function pageLd({ type = 'WebPage', path, name, description }: { type?: s
       ],
     },
   ];
+}
+
+/** Pagina di un servizio: il servizio offerto dallo studio, con zona servita e cosa include. */
+export function serviceLd(s: Service): Json {
+  const url = `${siteUrl}${serviceHref(s)}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: s.name,
+    serviceType: s.name,
+    description: s.page.seo.description,
+    url,
+    provider: { '@id': orgId },
+    areaServed: site.areaServed.map((name) => ({ '@type': 'Place', name })),
+    availableLanguage: site.languages,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: s.name,
+      itemListElement: s.points.map((p) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: p.title, description: p.text } })),
+    },
+  };
+}
+
+/** Domande frequenti di una pagina, le stesse che si leggono nella pagina. */
+export function faqLd(path: string, items: readonly { q: string; a: string }[]): Json {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${siteUrl}${path}#faq`,
+    mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  };
 }

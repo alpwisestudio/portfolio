@@ -142,6 +142,34 @@ html,body{overflow-anchor:none}
 /* ── Servizi ── */
 .lp-services{padding-top:0}
 
+/* ── Pagine dei servizi (/servizi/*) ──
+   Apertura come Contatti ma con frase e bottoni allineati a sinistra; celle "per chi è" con bordo condiviso;
+   "cosa ottieni" una voce per riga; chiusura sulla foto come lo Studio. */
+.lp-svc-hero{min-height:max(640px,88svh)}
+.lp-svc-hero h1{max-width:14ch;text-wrap:balance}
+.lp-svc-hero .lp-hero-lead{max-width:52ch}
+.lp-svc-hero .lp-hero-actions{justify-content:flex-start}
+.lp-cells{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--cols,3),minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.lp-cell{background:var(--bg);min-height:280px;padding:var(--space-8);display:flex;flex-direction:column;justify-content:flex-end;gap:var(--space-3)}
+.lp-cell h3{margin:0;font:400 24px/30px var(--font-sans);letter-spacing:-.02em;color:var(--text);text-wrap:balance}
+.lp-cell p{margin:0;max-width:34ch;font-size:16px;line-height:26px;color:var(--text-muted)}
+.lp-gets{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.lp-get{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--space-8);padding:var(--space-8) 0;border-bottom:1px solid var(--line)}
+.lp-get h3{margin:0;display:flex;align-items:baseline;gap:var(--space-6);font:400 36px/40px var(--font-sans);letter-spacing:-.025em;color:var(--text)}
+.lp-get-num{flex:none;min-width:var(--space-8);font:400 14px/20px var(--font-sans);font-variant-numeric:tabular-nums;color:var(--text-subtle)}
+.lp-get p{margin:0;max-width:46ch;font:300 20px/30px var(--font-sans);color:var(--text-muted);text-wrap:pretty}
+.lp-svc-cta{min-height:max(640px,80svh)}
+@media (max-width:1023px){.lp-cells{grid-template-columns:1fr}.lp-cell{min-height:0}.lp-get{grid-template-columns:1fr;gap:var(--space-3)}.lp-get p{padding-left:calc(var(--space-8) + var(--space-6))}}
+@media (max-width:767px){
+  .lp-svc-hero{min-height:560px}
+  .lp-svc-hero .lp-hero-actions{max-width:none}
+  .lp-cell{padding:var(--space-6) 20px}
+  .lp-get{padding:var(--space-6) 0}
+  .lp-get h3{font-size:28px;line-height:32px;gap:var(--space-4)}
+  .lp-get p{padding-left:0;font-size:18px;line-height:28px}
+  .lp-svc-cta{min-height:560px}
+}
+
 /* ── Case study BOOK ── */
 .lp-case-wrap{padding:0 var(--space-8) var(--space-32)}
 .lp-case{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}

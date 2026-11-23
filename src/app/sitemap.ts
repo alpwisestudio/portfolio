@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next';
-import { siteUrl } from '@/content/site';
+import { serviceHref, services, siteUrl } from '@/content/site';
 
 // Generato in build come /sitemap.xml. Aggiungi qui ogni nuova pagina pubblica (privacy e cookie restano fuori).
 const pages: { path: string; changeFrequency: 'monthly' | 'yearly'; priority: number }[] = [
   { path: '/', changeFrequency: 'monthly', priority: 1 },
+  ...services.map((s) => ({ path: serviceHref(s), changeFrequency: 'monthly' as const, priority: 0.9 })),
   { path: '/book', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/contatti', changeFrequency: 'yearly', priority: 0.8 },
 ];

@@ -5,7 +5,7 @@ import { pageMetadata } from '@/components/seo/meta';
 import { SiteFooter } from '@/components/landing/SiteFooter';
 import { SiteNav } from '@/components/landing/SiteNav';
 import {
-  BookCalendar, BookCta, BookCustomer, BookEmails, BookEmbed, BookFaq, BookHero, BookIntro, BookMobile, BookPortal, BookSettings, BookTrust,
+  BookCalendar, BookCta, BookCustomer, BookEmails, BookEmbed, BookFaq, BookHero, BookIntro, BookMobile, BookPortal, BookSettings, BookStudio, BookTrust,
 } from '@/components/book/BookLanding';
 
 const seo = {
@@ -27,6 +27,7 @@ export default function BookPage() {
         <BookEmbed />
         <BookPortal />
         <BookMobile />
+        <BookStudio />
         <BookCalendar />
         <BookSettings />
         <BookEmails />

@@ -6,7 +6,7 @@ import { faqs, features, shots, steps } from '@/content/book';
 import { BrowserShot, PhoneShot, ShotTabs } from './Shots';
 
 const PORTAL = 'book.alpwise.studio/portale';
-const PAGE = 'book.alpwise.studio/p/trattoria-del-lago';
+const PAGE = 'book.alpwise.studio/p/trattoria-esempio';
 
 /** Apertura: orizzonte con la griglia, titolo e, sotto, il portale da computer con il telefono davanti. */
 export function BookHero() {

@@ -32,6 +32,7 @@ Obiettivo: WCAG 2.2 AA in entrambi i temi, orizzonte compreso.
 - Misurato sul pixel più chiaro sotto ogni riga della hero (960px): titolo ≥ 8.3:1, lead ≥ 6.0:1 (bianco all'86%: ≥ 5:1).
 - Il fondo più chiaro è `sky-700`, sul bordo inferiore: il testo bianco passa a ogni altezza (≥ 5.8:1). Niente testo nero sull'orizzonte.
 - I bottoni sull'orizzonte hanno sempre un fondo pieno (`primary`, `light`, `dark`), mai solo il bordo.
+- Sul bagliore (`al-glow`) il centro arriva a `sky-200`, dove il bianco non passa: testo e logo restano nella metà alta, sul Notte.
 
 ## Focus e tastiera
 

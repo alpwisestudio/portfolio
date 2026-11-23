@@ -91,9 +91,9 @@ export const services = [
 ];
 
 export const steps = [
-  { title: 'Ascoltiamo', text: 'Un caffè, anche online. Ci racconti una tua giornata di lavoro.', photo: 'consulenza' },
-  { title: 'Proponiamo', text: 'Cosa serve, cosa no, quanto costa e in quanto tempo. In italiano, non in sigle.', photo: 'quaderno' },
-  { title: 'Costruiamo e restiamo', text: 'Lo realizziamo, ti insegniamo a usarlo e restiamo raggiungibili.', photo: 'sentiero' },
+  { title: 'Ascoltiamo', text: 'Un caffè, anche online. Ci racconti una tua giornata di lavoro.' },
+  { title: 'Proponiamo', text: 'Cosa serve, cosa no, quanto costa e in quanto tempo. In italiano, non in sigle.' },
+  { title: 'Costruiamo e restiamo', text: 'Lo realizziamo, ti insegniamo a usarlo e restiamo raggiungibili.' },
 ] as const;
 
 export const faqs = [

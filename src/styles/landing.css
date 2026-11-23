@@ -6,7 +6,7 @@ html{scroll-behavior:smooth}
 html,body{overflow-anchor:none}
 /* Attesa delle animazioni (classe m-wait messa da uno script in <head> prima del primo disegno):
    finché una Scene non è armata o in corso, i suoi elementi animati restano nel loro stato iniziale. */
-.m-wait .al-scene:not(.is-play):not(.is-armed) :is([data-m],[data-m="stagger"]>*,.al-wi,.lp-step-photo,.al-cols>i,.al-footer-grid>*){opacity:0}
+.m-wait .al-scene:not(.is-play):not(.is-armed) :is([data-m],[data-m="stagger"]>*,.al-wi,.al-cols>i,.al-footer-grid>*){opacity:0}
 .m-wait .al-scene.lp-hero:not(.is-play):not(.is-armed) .al-photo-img{filter:brightness(.3) saturate(.5);transform:scale(1.14)}
 .m-wait .al-scene.lp-hero:not(.is-play):not(.is-armed)::after{clip-path:inset(0 0 100% 0)}
 .m-wait .al-scene:not(.is-play):not(.is-armed) .al-hl-x{background-size:0% 100%;color:inherit}
@@ -125,23 +125,19 @@ html,body{overflow-anchor:none}
 [data-theme="light"] .lp-dim{color:var(--grey-500)}
 @media (max-width:767px){.lp-statement{font-size:36px;line-height:40px;letter-spacing:-.03em}}
 
-/* ── Come lavoriamo: tre colonne, due con la foto ── */
+/* ── Come lavoriamo: tre celle con bordo condiviso, numero grande in alto, titolo e frase in basso ── */
 .lp-method{padding-top:0}
-.lp-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-6);align-items:start}
-.lp-step{display:flex;flex-direction:column;gap:var(--space-6)}
-.lp-step-photo{position:relative;height:320px;overflow:hidden;background:var(--night)}
-/* Stesso trattamento per le tre foto: un po' meno saturate, velo Notte in basso; al passaggio tornano piene */
-.lp-step-photo img{object-fit:cover;filter:saturate(.72) contrast(1.05) brightness(.9);transform:scale(1.04);transition:transform 1400ms var(--ease-out),filter var(--motion-slow) var(--ease-out)}
-.lp-step-photo::after{content:"";position:absolute;inset:0;background:var(--photo-scrim-soft);opacity:.7;pointer-events:none;transition:opacity var(--motion-slow)}
-@media (hover:hover){.lp-step:hover .lp-step-photo img{transform:scale(1.1);filter:none}.lp-step:hover .lp-step-photo::after{opacity:.2}}
-:is(.is-play,.is-armed) .lp-step-photo{animation:al-band 1100ms var(--ease-in-out) both;animation-delay:calc(200ms + var(--i,0) * 160ms)}
-.lp-step-body .lp-num{transition:color var(--motion-fast)}
-.lp-step:hover .lp-num{color:var(--link)}
-@media (prefers-reduced-motion:reduce){.lp-step-photo,.lp-step-photo img{animation:none!important;transition:none!important}}
-.lp-step-body{display:flex;gap:var(--space-4);align-items:baseline;border-top:1px solid var(--line);padding-top:20px}
+.lp-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.lp-step{position:relative;background:var(--bg);min-height:400px;padding:var(--space-8);display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-12)}
+/* Al passaggio una riga azzurra entra dall'alto a sinistra e il numero si accende */
+.lp-step::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:2px;background:var(--primary);transform:scaleX(0);transform-origin:left;transition:transform var(--motion-slow) var(--ease-out)}
+.lp-step-num{font:400 clamp(72px,8vw,120px)/.9 var(--font-sans);letter-spacing:-.05em;font-variant-numeric:tabular-nums;color:var(--text-subtle);transition:color var(--motion-base) var(--ease-out)}
+@media (hover:hover){.lp-step:hover::before{transform:scaleX(1)}.lp-step:hover .lp-step-num{color:var(--text)}}
 .lp-step h3{margin:0 0 var(--space-3);font:400 36px/40px var(--font-sans);letter-spacing:-.025em;color:var(--text)}
-.lp-step p{margin:0;font-size:16px;line-height:26px;color:var(--text-muted)}
-@media (max-width:767px){.lp-step h3{font-size:28px;line-height:32px}.lp-step-photo{height:220px}}
+.lp-step p{margin:0;max-width:34ch;font-size:16px;line-height:26px;color:var(--text-muted)}
+@media (prefers-reduced-motion:reduce){.lp-step::before,.lp-step-num{transition:none}}
+@media (max-width:960px){.lp-steps{grid-template-columns:1fr}.lp-step{min-height:0;flex-direction:row;align-items:baseline;gap:var(--space-6)}.lp-step-num{font-size:56px;min-width:2ch}}
+@media (max-width:767px){.lp-step{padding:var(--space-6) 20px;gap:var(--space-4)}.lp-step-num{font-size:40px}.lp-step h3{font-size:28px;line-height:32px}}
 
 /* ── Servizi ── */
 .lp-services{padding-top:0}

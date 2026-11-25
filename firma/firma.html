@@ -6,93 +6,235 @@
     <title>Firma email Alpwise Studio</title>
   </head>
   <!--
-    Firma delle email dello studio. Apri questo file nel browser, seleziona tutto il riquadro, copia e incolla in
-    Gmail › Impostazioni › Firma. Cambia il nome per ogni persona dello studio.
-    Colori dai token di @alpwisestudio/ui (Chiaro) come esadecimali: i client email non leggono le variabili CSS.
-    Font di sistema: Host Grotesk non arriva nelle email. Il simbolo è un PNG (gli SVG non si vedono):
-    https://alpwise.studio/brand/email/alpwise-symbol.png, A bianca su Notte (#06080B).
+    Firma delle email dello studio, uguale per tutti. Apri questo file nel browser, seleziona il riquadro, copia e
+    incolla in Gmail › Impostazioni › Firma.
+    Testi dal sito (src/content/site.ts, footer, pagina /book): se cambiano lì, cambiali anche qui.
+    Colori dai token di @alpwisestudio/ui come esadecimali (i client email non leggono le variabili CSS); la fascia
+    in fondo è il Notte (#06080B) del footer del sito. Font di sistema: Host Grotesk non arriva nelle email.
+    Loghi in PNG (gli SVG non si vedono), in public/brand/email/.
   -->
   <body style="margin: 0; padding: 24px; background-color: #ffffff">
     <table
       role="presentation"
+      width="480"
       cellpadding="0"
       cellspacing="0"
       style="
+        width: 100%;
+        max-width: 480px;
         border-collapse: collapse;
         font-family: Helvetica, Arial, sans-serif;
         color: #000000;
       "
     >
       <tr>
-        <td style="padding: 0 16px 0 0; vertical-align: top">
+        <td style="padding: 0 0 16px">
           <a
             href="https://alpwise.studio"
-            style="display: block; text-decoration: none"
+            style="display: inline-block; text-decoration: none"
             ><img
-              src="https://alpwise.studio/brand/email/alpwise-symbol.png"
-              width="56"
-              height="56"
+              src="https://alpwise.studio/brand/email/alpwise-wordmark-black.png"
+              width="153"
+              height="28"
               alt="Alpwise Studio"
-              style="display: block; border: 0; width: 56px; height: 56px"
+              style="display: block; border: 0; width: 153px; height: 28px"
           /></a>
         </td>
+      </tr>
+      <tr>
         <td
           style="
-            padding: 0 0 0 16px;
-            vertical-align: top;
-            border-left: 1px solid #e4e8ee;
+            padding: 0 0 4px;
+            font-size: 16px;
+            line-height: 22px;
+            color: #000000;
           "
         >
-          <p
-            style="
-              margin: 0;
-              font-size: 16px;
-              line-height: 22px;
-              font-weight: 400;
-              color: #000000;
-            "
+          Consulenza digitale per le PMI, ai piedi delle Prealpi.
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="
+            padding: 0 0 16px;
+            font-size: 13px;
+            line-height: 20px;
+            font-weight: 500;
+            color: #6c7582;
+          "
+        >
+          Siti · Gestionali su misura · AI e automazioni
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top: 1px solid #e4e8ee; padding: 12px 0 0">
+          <table
+            role="presentation"
+            cellpadding="0"
+            cellspacing="0"
+            style="border-collapse: collapse"
           >
-            Luca Mimmo
-          </p>
-          <p
-            style="
-              margin: 0 0 12px;
-              font-size: 13px;
-              line-height: 20px;
-              font-weight: 500;
-              color: #6c7582;
-            "
+            <tr>
+              <td
+                style="
+                  width: 72px;
+                  padding: 2px 0;
+                  font-size: 13px;
+                  line-height: 20px;
+                  font-weight: 500;
+                  color: #6c7582;
+                "
+              >
+                Telefono
+              </td>
+              <td
+                style="
+                  padding: 2px 0;
+                  font-size: 13px;
+                  line-height: 20px;
+                  font-variant-numeric: tabular-nums;
+                "
+              >
+                <a
+                  href="tel:+393773183236"
+                  style="color: #000000; text-decoration: none"
+                  >+39 377 318 3236</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td
+                style="
+                  width: 72px;
+                  padding: 2px 0;
+                  font-size: 13px;
+                  line-height: 20px;
+                  font-weight: 500;
+                  color: #6c7582;
+                "
+              >
+                Email
+              </td>
+              <td style="padding: 2px 0; font-size: 13px; line-height: 20px">
+                <a
+                  href="mailto:alpwisestudio@gmail.com"
+                  style="color: #000000; text-decoration: none"
+                  >alpwisestudio@gmail.com</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td
+                style="
+                  width: 72px;
+                  padding: 2px 0;
+                  font-size: 13px;
+                  line-height: 20px;
+                  font-weight: 500;
+                  color: #6c7582;
+                "
+              >
+                Sito
+              </td>
+              <td style="padding: 2px 0; font-size: 13px; line-height: 20px">
+                <a
+                  href="https://alpwise.studio"
+                  style="color: #0b5ed7; text-decoration: underline"
+                  >alpwise.studio</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td
+                style="
+                  width: 72px;
+                  padding: 2px 0;
+                  font-size: 13px;
+                  line-height: 20px;
+                  font-weight: 500;
+                  color: #6c7582;
+                "
+              >
+                Sede
+              </td>
+              <td style="padding: 2px 0; font-size: 13px; line-height: 20px">
+                Gallarate (VA)
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="
+            padding: 12px 0 16px;
+            font-size: 12px;
+            line-height: 18px;
+            color: #4a525e;
+          "
+        >
+          Rispondiamo entro un giorno lavorativo.
+        </td>
+      </tr>
+      <tr>
+        <td style="background-color: #06080b; padding: 16px 20px">
+          <table
+            role="presentation"
+            width="100%"
+            cellpadding="0"
+            cellspacing="0"
+            style="border-collapse: collapse"
           >
-            Alpwise Studio · Gallarate (VA)
-          </p>
-          <p
-            style="
-              margin: 0;
-              font-size: 13px;
-              line-height: 20px;
-              color: #4a525e;
-              font-variant-numeric: tabular-nums;
-            "
-          >
-            <a
-              href="tel:+393773183236"
-              style="color: #4a525e; text-decoration: none"
-              >+39 377 318 3236</a
-            >
-            <span style="color: #c9d0d9">&nbsp;·&nbsp;</span>
-            <a
-              href="mailto:alpwisestudio@gmail.com"
-              style="color: #4a525e; text-decoration: none"
-              >alpwisestudio@gmail.com</a
-            >
-          </p>
-          <p style="margin: 0; font-size: 13px; line-height: 20px">
-            <a
-              href="https://alpwise.studio"
-              style="color: #0b5ed7; text-decoration: underline"
-              >alpwise.studio</a
-            >
-          </p>
+            <tr>
+              <td style="vertical-align: middle">
+                <a
+                  href="https://alpwise.studio/book"
+                  style="display: inline-block; text-decoration: none"
+                  ><img
+                    src="https://alpwise.studio/brand/email/alpwise-book-white.png"
+                    width="121"
+                    height="22"
+                    alt="Alpwise book"
+                    style="
+                      display: block;
+                      border: 0;
+                      width: 121px;
+                      height: 22px;
+                    "
+                /></a>
+                <span
+                  style="
+                    display: block;
+                    margin-top: 6px;
+                    font-size: 13px;
+                    line-height: 18px;
+                    color: #9ba4b0;
+                  "
+                  >Prenotazioni per ristoranti, dal tuo sito.</span
+                >
+              </td>
+              <td
+                align="right"
+                style="
+                  vertical-align: middle;
+                  padding-left: 16px;
+                  white-space: nowrap;
+                "
+              >
+                <a
+                  href="https://alpwise.studio/book"
+                  style="
+                    font-size: 13px;
+                    line-height: 18px;
+                    font-weight: 500;
+                    color: #ffffff;
+                    text-decoration: underline;
+                  "
+                  >Scopri</a
+                >
+              </td>
+            </tr>
+          </table>
         </td>
       </tr>
     </table>

@@ -275,7 +275,8 @@ a.lp-contact-row:hover .lp-arr{transform:translateX(6px)}
 .al-legal-body h2{font:400 24px/30px var(--font-sans);letter-spacing:-.015em;color:var(--text);margin:0 0 var(--space-4);scroll-margin-top:var(--space-6)}
 .al-legal-body p,.al-legal-body ul{margin:0 0 var(--space-4);max-width:68ch}
 .al-legal-body p:last-child,.al-legal-body ul:last-child{margin-bottom:0}
-.al-legal-body ul{padding-left:20px}
+/* Elenchi senza rientro, allineati ai paragrafi (il reset di Tailwind toglie già i pallini). */
+.al-legal-body ul{padding-left:0}
 .al-legal-body li+li{margin-top:var(--space-2)}
 .al-legal-body strong{color:var(--text);font-weight:500}
 .al-legal-body a{color:var(--link)}

@@ -8,10 +8,9 @@
   <!--
     Firma delle email dello studio, uguale per tutti. Apri questo file nel browser, seleziona il riquadro, copia e
     incolla in Gmail › Impostazioni › Firma.
-    In alto la foto del lago come sul sito (lago-alba.jpg, velo Notte morbido, griglia a 12 colonne) con il wordmark
-    bianco: tutto in un'unica immagine, public/brand/email/firma-lago.jpg (960 × 320, mostrata a 480 × 160), perché
-    nelle email il testo sopra un'immagine non è affidabile. Il resto è chiaro, con i token del tema Chiaro come
-    esadecimali. Testi da src/content/site.ts, dal footer e dalla pagina /book: se cambiano lì, cambiali anche qui.
+    Tema Chiaro: token di @alpwisestudio/ui come esadecimali (i client email non leggono le variabili CSS), font di
+    sistema (Host Grotesk non arriva nelle email), loghi PNG in public/brand/email/ (gli SVG non si vedono).
+    Testi da src/content/site.ts, dal footer e dalla pagina /book: se cambiano lì, cambiali anche qui.
   -->
   <body style="margin: 0; padding: 24px; background-color: #ffffff">
     <table
@@ -27,30 +26,26 @@
         color: #000000;
       "
     >
+      <!-- Marchio e posizionamento -->
       <tr>
-        <td style="padding: 0">
+        <td colspan="2" style="padding: 0 0 16px">
           <a
             href="https://alpwise.studio"
-            style="display: block; text-decoration: none"
+            style="display: inline-block; text-decoration: none"
             ><img
-              src="https://alpwise.studio/brand/email/firma-lago.jpg"
-              width="480"
-              height="160"
+              src="https://alpwise.studio/brand/email/alpwise-wordmark-black.png"
+              width="153"
+              height="28"
               alt="Alpwise Studio"
-              style="
-                display: block;
-                border: 0;
-                width: 100%;
-                max-width: 480px;
-                height: auto;
-              "
+              style="display: block; border: 0; width: 153px; height: 28px"
           /></a>
         </td>
       </tr>
       <tr>
         <td
+          colspan="2"
           style="
-            padding: 20px 0 4px;
+            padding: 0 0 4px;
             font-size: 16px;
             line-height: 22px;
             color: #000000;
@@ -61,62 +56,124 @@
       </tr>
       <tr>
         <td
+          colspan="2"
           style="
             padding: 0 0 16px;
             font-size: 13px;
             line-height: 20px;
-            font-weight: 500;
-            color: #6c7582;
+            color: #4a525e;
           "
         >
           Siti · Gestionali su misura · AI e automazioni
         </td>
       </tr>
+      <!-- Contatti su due colonne: etichetta sopra, dato sotto -->
       <tr>
         <td
+          width="50%"
           style="
             border-top: 1px solid #e4e8ee;
-            padding: 12px 0 0;
-            font-size: 13px;
-            line-height: 22px;
-            color: #000000;
-            font-variant-numeric: tabular-nums;
+            padding: 16px 16px 12px 0;
+            vertical-align: top;
           "
         >
+          <span
+            style="
+              display: block;
+              font-size: 12px;
+              line-height: 16px;
+              font-weight: 500;
+              color: #6c7582;
+            "
+            >Telefono</span
+          >
           <a
             href="tel:+393773183236"
-            style="color: #000000; text-decoration: none"
+            style="
+              font-size: 14px;
+              line-height: 20px;
+              color: #000000;
+              text-decoration: none;
+              font-variant-numeric: tabular-nums;
+            "
             >+39 377 318 3236</a
           >
-          <span style="color: #9ba4b0">&nbsp;·&nbsp;</span>
-          <a
-            href="mailto:alpwisestudio@gmail.com"
-            style="color: #000000; text-decoration: none"
-            >alpwisestudio@gmail.com</a
-          ><br />
-          <a
-            href="https://alpwise.studio"
-            style="color: #0b5ed7; text-decoration: underline"
-            >alpwise.studio</a
-          >
-          <span style="color: #9ba4b0">&nbsp;·&nbsp;</span>
-          <span style="color: #4a525e">Gallarate (VA)</span>
         </td>
-      </tr>
-      <tr>
         <td
+          width="50%"
           style="
-            padding: 4px 0 16px;
-            font-size: 12px;
-            line-height: 18px;
-            color: #4a525e;
+            border-top: 1px solid #e4e8ee;
+            padding: 16px 0 12px;
+            vertical-align: top;
           "
         >
-          Rispondiamo entro un giorno lavorativo.
+          <span
+            style="
+              display: block;
+              font-size: 12px;
+              line-height: 16px;
+              font-weight: 500;
+              color: #6c7582;
+            "
+            >Email</span
+          >
+          <a
+            href="mailto:alpwisestudio@gmail.com"
+            style="
+              font-size: 14px;
+              line-height: 20px;
+              color: #000000;
+              text-decoration: none;
+            "
+            >alpwisestudio@gmail.com</a
+          >
         </td>
       </tr>
       <tr>
-        <td style="border-top: 1px solid #e4e8ee; padding: 12px 0 0">
+        <td width="50%" style="padding: 0 16px 16px 0; vertical-align: top">
+          <span
+            style="
+              display: block;
+              font-size: 12px;
+              line-height: 16px;
+              font-weight: 500;
+              color: #6c7582;
+            "
+            >Sito</span
+          >
+          <a
+            href="https://alpwise.studio"
+            style="
+              font-size: 14px;
+              line-height: 20px;
+              color: #0b5ed7;
+              text-decoration: underline;
+            "
+            >alpwise.studio</a
+          >
+        </td>
+        <td width="50%" style="padding: 0 0 16px; vertical-align: top">
+          <span
+            style="
+              display: block;
+              font-size: 12px;
+              line-height: 16px;
+              font-weight: 500;
+              color: #6c7582;
+            "
+            >Sede</span
+          >
+          <span style="font-size: 14px; line-height: 20px; color: #000000"
+            >Gallarate (VA)</span
+          >
+        </td>
+      </tr>
+      <!-- Alpwise book -->
+      <tr>
+        <td
+          colspan="2"
+          style="border-top: 1px solid #e4e8ee; padding: 16px 0 0"
+        >
           <table
             role="presentation"
             width="100%"
@@ -174,6 +231,19 @@
               </td>
             </tr>
           </table>
+        </td>
+      </tr>
+      <tr>
+        <td
+          colspan="2"
+          style="
+            padding: 16px 0 0;
+            font-size: 12px;
+            line-height: 18px;
+            color: #6c7582;
+          "
+        >
+          Rispondiamo entro un giorno lavorativo.
         </td>
       </tr>
     </table>

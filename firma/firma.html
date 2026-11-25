@@ -8,10 +8,10 @@
   <!--
     Firma delle email dello studio, uguale per tutti. Apri questo file nel browser, seleziona il riquadro, copia e
     incolla in Gmail › Impostazioni › Firma.
-    Testi dal sito (src/content/site.ts, footer, pagina /book): se cambiano lì, cambiali anche qui.
-    Colori dai token di @alpwisestudio/ui come esadecimali (i client email non leggono le variabili CSS); la fascia
-    in fondo è il Notte (#06080B) del footer del sito. Font di sistema: Host Grotesk non arriva nelle email.
-    Loghi in PNG (gli SVG non si vedono), in public/brand/email/.
+    In alto la foto del lago come sul sito (lago-alba.jpg, velo Notte morbido, griglia a 12 colonne) con il wordmark
+    bianco: tutto in un'unica immagine, public/brand/email/firma-lago.jpg (960 × 320, mostrata a 480 × 160), perché
+    nelle email il testo sopra un'immagine non è affidabile. Il resto è chiaro, con i token del tema Chiaro come
+    esadecimali. Testi da src/content/site.ts, dal footer e dalla pagina /book: se cambiano lì, cambiali anche qui.
   -->
   <body style="margin: 0; padding: 24px; background-color: #ffffff">
     <table
@@ -28,23 +28,29 @@
       "
     >
       <tr>
-        <td style="padding: 0 0 16px">
+        <td style="padding: 0">
           <a
             href="https://alpwise.studio"
-            style="display: inline-block; text-decoration: none"
+            style="display: block; text-decoration: none"
             ><img
-              src="https://alpwise.studio/brand/email/alpwise-wordmark-black.png"
-              width="153"
-              height="28"
+              src="https://alpwise.studio/brand/email/firma-lago.jpg"
+              width="480"
+              height="160"
               alt="Alpwise Studio"
-              style="display: block; border: 0; width: 153px; height: 28px"
+              style="
+                display: block;
+                border: 0;
+                width: 100%;
+                max-width: 480px;
+                height: auto;
+              "
           /></a>
         </td>
       </tr>
       <tr>
         <td
           style="
-            padding: 0 0 4px;
+            padding: 20px 0 4px;
             font-size: 16px;
             line-height: 22px;
             color: #000000;
@@ -67,107 +73,40 @@
         </td>
       </tr>
       <tr>
-        <td style="border-top: 1px solid #e4e8ee; padding: 12px 0 0">
-          <table
-            role="presentation"
-            cellpadding="0"
-            cellspacing="0"
-            style="border-collapse: collapse"
+        <td
+          style="
+            border-top: 1px solid #e4e8ee;
+            padding: 12px 0 0;
+            font-size: 13px;
+            line-height: 22px;
+            color: #000000;
+            font-variant-numeric: tabular-nums;
+          "
+        >
+          <a
+            href="tel:+393773183236"
+            style="color: #000000; text-decoration: none"
+            >+39 377 318 3236</a
           >
-            <tr>
-              <td
-                style="
-                  width: 72px;
-                  padding: 2px 0;
-                  font-size: 13px;
-                  line-height: 20px;
-                  font-weight: 500;
-                  color: #6c7582;
-                "
-              >
-                Telefono
-              </td>
-              <td
-                style="
-                  padding: 2px 0;
-                  font-size: 13px;
-                  line-height: 20px;
-                  font-variant-numeric: tabular-nums;
-                "
-              >
-                <a
-                  href="tel:+393773183236"
-                  style="color: #000000; text-decoration: none"
-                  >+39 377 318 3236</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td
-                style="
-                  width: 72px;
-                  padding: 2px 0;
-                  font-size: 13px;
-                  line-height: 20px;
-                  font-weight: 500;
-                  color: #6c7582;
-                "
-              >
-                Email
-              </td>
-              <td style="padding: 2px 0; font-size: 13px; line-height: 20px">
-                <a
-                  href="mailto:alpwisestudio@gmail.com"
-                  style="color: #000000; text-decoration: none"
-                  >alpwisestudio@gmail.com</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td
-                style="
-                  width: 72px;
-                  padding: 2px 0;
-                  font-size: 13px;
-                  line-height: 20px;
-                  font-weight: 500;
-                  color: #6c7582;
-                "
-              >
-                Sito
-              </td>
-              <td style="padding: 2px 0; font-size: 13px; line-height: 20px">
-                <a
-                  href="https://alpwise.studio"
-                  style="color: #0b5ed7; text-decoration: underline"
-                  >alpwise.studio</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td
-                style="
-                  width: 72px;
-                  padding: 2px 0;
-                  font-size: 13px;
-                  line-height: 20px;
-                  font-weight: 500;
-                  color: #6c7582;
-                "
-              >
-                Sede
-              </td>
-              <td style="padding: 2px 0; font-size: 13px; line-height: 20px">
-                Gallarate (VA)
-              </td>
-            </tr>
-          </table>
+          <span style="color: #9ba4b0">&nbsp;·&nbsp;</span>
+          <a
+            href="mailto:alpwisestudio@gmail.com"
+            style="color: #000000; text-decoration: none"
+            >alpwisestudio@gmail.com</a
+          ><br />
+          <a
+            href="https://alpwise.studio"
+            style="color: #0b5ed7; text-decoration: underline"
+            >alpwise.studio</a
+          >
+          <span style="color: #9ba4b0">&nbsp;·&nbsp;</span>
+          <span style="color: #4a525e">Gallarate (VA)</span>
         </td>
       </tr>
       <tr>
         <td
           style="
-            padding: 12px 0 16px;
+            padding: 4px 0 16px;
             font-size: 12px;
             line-height: 18px;
             color: #4a525e;
@@ -177,7 +116,7 @@
         </td>
       </tr>
       <tr>
-        <td style="background-color: #06080b; padding: 16px 20px">
+        <td style="border-top: 1px solid #e4e8ee; padding: 12px 0 0">
           <table
             role="presentation"
             width="100%"
@@ -191,14 +130,14 @@
                   href="https://alpwise.studio/book"
                   style="display: inline-block; text-decoration: none"
                   ><img
-                    src="https://alpwise.studio/brand/email/alpwise-book-white.png"
-                    width="121"
+                    src="https://alpwise.studio/brand/email/alpwise-book-black.png"
+                    width="122"
                     height="22"
                     alt="Alpwise book"
                     style="
                       display: block;
                       border: 0;
-                      width: 121px;
+                      width: 122px;
                       height: 22px;
                     "
                 /></a>
@@ -208,7 +147,7 @@
                     margin-top: 6px;
                     font-size: 13px;
                     line-height: 18px;
-                    color: #9ba4b0;
+                    color: #4a525e;
                   "
                   >Prenotazioni per ristoranti, dal tuo sito.</span
                 >
@@ -227,7 +166,7 @@
                     font-size: 13px;
                     line-height: 18px;
                     font-weight: 500;
-                    color: #ffffff;
+                    color: #0b5ed7;
                     text-decoration: underline;
                   "
                   >Scopri</a

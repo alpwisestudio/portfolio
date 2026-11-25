@@ -22,7 +22,7 @@ const sections: LegalSection[] = [
         ) : legal.owners.length > 1 ? (
           <>
             <p>I dati sono trattati da <strong>Alpwise Studio</strong>, di {joinNames(legal.owners)}, contitolari del trattamento (art. 26 GDPR){legal.address && <>, con sede in {legal.address}</>}.</p>
-            <p>Tra noi c&apos;è un accordo che stabilisce chi fa cosa: la persona che gestisce la casella email risponde alle richieste sui dati. Se vuoi, te ne mandiamo il contenuto essenziale. Puoi comunque rivolgerti a ciascuno di noi.</p>
+            <p>Tra noi c&apos;è un accordo scritto su come gestiamo i dati: gli account dello studio sono condivisi e rispondiamo insieme alle richieste dalla casella email. Se vuoi, te ne mandiamo il contenuto essenziale. Puoi rivolgerti a ciascuno di noi.</p>
           </>
         ) : (
           <p>Il titolare del trattamento è <strong>Alpwise Studio</strong>, di <Val v={legal.owners[0]} ph="Nome del titolare" />{legal.address && <>, con sede in {legal.address}</>}.</p>

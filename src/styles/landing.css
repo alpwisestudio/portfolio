@@ -277,6 +277,9 @@ a.lp-contact-row:hover .lp-arr{transform:translateX(6px)}
 .al-legal-body p:last-child,.al-legal-body ul:last-child{margin-bottom:0}
 /* Elenchi senza rientro, allineati ai paragrafi (il reset di Tailwind toglie già i pallini). */
 .al-legal-body ul{padding-left:0}
+/* Elenco puntato e rientrato: il pallino sta in linea con i paragrafi, il testo parte più a destra. */
+.al-legal-body ul.al-legal-bullets{list-style:disc outside;padding-left:1.25em}
+.al-legal-body ul.al-legal-bullets li::marker{color:var(--text-subtle)}
 .al-legal-body li+li{margin-top:var(--space-2)}
 .al-legal-body strong{color:var(--text);font-weight:500}
 .al-legal-body a{color:var(--link)}

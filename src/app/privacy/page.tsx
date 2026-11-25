@@ -66,7 +66,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>Non vendiamo né cediamo i tuoi dati. Li trattano solo i fornitori che ci servono per far funzionare il sito, nominati responsabili del trattamento:</p>
-        <ul>
+        <ul className="al-legal-bullets">
           <li>Hosting del sito: <Val v={legal.hosting} ph="Fornitore e paese" />.</li>
           <li>Invio del modulo contatti per email: <Val v={legal.formProcessor} ph="Servizio e paese" />.</li>
           <li>Casella email su cui riceviamo le richieste: <Val v={legal.mailbox} ph="Servizio e paese" />.</li>
@@ -84,7 +84,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>In qualsiasi momento puoi chiederci di:</p>
-        <ul>
+        <ul className="al-legal-bullets">
           <li>sapere quali dati abbiamo su di te e averne una copia;</li>
           <li>correggerli o completarli;</li>
           <li>cancellarli, o limitarne l&apos;uso;</li>

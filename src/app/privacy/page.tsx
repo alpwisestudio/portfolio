@@ -9,13 +9,25 @@ const seo = { path: '/privacy', title: 'Privacy', description: 'Come Alpwise Stu
 export const metadata: Metadata = pageMetadata(seo);
 
 // Struttura secondo l'art. 13 del GDPR. I segnaposto vanno riempiti e il testo verificato da un consulente.
+const joinNames = (names: string[]) => names.length > 1 ? `${names.slice(0, -1).join(', ')} e ${names.at(-1)}` : names[0];
+
 const sections: LegalSection[] = [
   {
     id: 'titolare', title: 'Chi tratta i tuoi dati',
     body: (
       <>
-        <p>Il titolare del trattamento è <strong><Val v={legal.owner} ph="Ragione sociale" /></strong>, con sede in <Val v={legal.address} ph="Indirizzo completo, Gallarate (VA)" />, P.IVA <Val v={contact.vat} ph="P.IVA" />.</p>
-        <p>Per qualsiasi domanda sui tuoi dati scrivi a <Val v={contact.email} ph="Email" /> oppure alla PEC <Val v={legal.pec} ph="PEC" />.</p>
+        {/* Sede, P.IVA e PEC compaiono solo quando esistono: finché lo studio non è un'attività registrata basta chi è il titolare e come contattarlo. */}
+        {legal.company ? (
+          <p>Il titolare del trattamento è <strong>{legal.company}</strong>{legal.address && <>, con sede in {legal.address}</>}{contact.vat && <>, P.IVA {contact.vat}</>}.</p>
+        ) : legal.owners.length > 1 ? (
+          <>
+            <p>I dati sono trattati da <strong>Alpwise Studio</strong>, di {joinNames(legal.owners)}, contitolari del trattamento (art. 26 GDPR){legal.address && <>, con sede in {legal.address}</>}.</p>
+            <p>Tra noi c&apos;è un accordo che stabilisce chi fa cosa: la persona che gestisce la casella email risponde alle richieste sui dati. Se vuoi, te ne mandiamo il contenuto essenziale. Puoi comunque rivolgerti a ciascuno di noi.</p>
+          </>
+        ) : (
+          <p>Il titolare del trattamento è <strong>Alpwise Studio</strong>, di <Val v={legal.owners[0]} ph="Nome del titolare" />{legal.address && <>, con sede in {legal.address}</>}.</p>
+        )}
+        <p>Per qualsiasi domanda sui tuoi dati scrivi a <Val v={contact.email} ph="Email" />{legal.pec && <> oppure alla PEC {legal.pec}</>}.</p>
       </>
     ),
   },
@@ -23,7 +35,7 @@ const sections: LegalSection[] = [
     id: 'dati', title: 'Quali dati raccogliamo',
     body: (
       <>
-        <p><strong>Dati che ci scrivi tu.</strong> Quando usi il modulo contatti raccogliamo nome, email, il servizio che ti interessa e il messaggio. Ti chiediamo di non inserire dati sensibili.</p>
+        <p><strong>Dati che ci scrivi tu.</strong> Quando usi il modulo contatti raccogliamo nome ed email e, se li inserisci, azienda, telefono, il servizio che ti interessa e il messaggio. Lo stesso vale se ci scrivi per email o ci chiami. Ti chiediamo di non inserire dati sensibili.</p>
         <p><strong>Dati tecnici di navigazione.</strong> Il server che ospita il sito registra automaticamente alcuni dati per farlo funzionare e proteggerlo: indirizzo IP, data e ora della richiesta, pagina richiesta, tipo di browser. Non li usiamo per identificarti.</p>
         <p>Il sito non usa cookie di analisi o di profilazione. I dettagli sono nella <a href="/cookie">pagina sui cookie</a>.</p>
       </>
@@ -56,9 +68,10 @@ const sections: LegalSection[] = [
         <p>Non vendiamo né cediamo i tuoi dati. Li trattano solo i fornitori che ci servono per far funzionare il sito, nominati responsabili del trattamento:</p>
         <ul>
           <li>Hosting del sito: <Val v={legal.hosting} ph="Fornitore e paese" />.</li>
-          <li>Ricezione del modulo contatti: <Val v={legal.formProcessor} ph="Servizio e paese" />.</li>
+          <li>Invio del modulo contatti per email: <Val v={legal.formProcessor} ph="Servizio e paese" />.</li>
+          <li>Casella email su cui riceviamo le richieste: <Val v={legal.mailbox} ph="Servizio e paese" />.</li>
         </ul>
-        <p>Se uno di questi fornitori tratta dati fuori dall&apos;Unione europea, lo fa con le garanzie previste dal GDPR, come le clausole contrattuali standard. <Val v={null} ph="Da verificare per ogni fornitore" /></p>
+        <p>Vercel e Resend hanno sede negli Stati Uniti. Il trasferimento dei dati avviene con le garanzie previste dal GDPR: Vercel aderisce all&apos;EU-U.S. Data Privacy Framework, ed entrambi applicano le clausole contrattuali standard approvate dalla Commissione europea. Google può trattare dati anche fuori dall&apos;Unione europea con le stesse garanzie.</p>
       </>
     ),
   },

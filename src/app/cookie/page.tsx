@@ -31,7 +31,7 @@ const sections: LegalSection[] = [
             rows={rows}
           />
         ) : (
-          <p>Il codice del sito oggi non imposta nessun cookie. Il fornitore di hosting (<Val v={legal.hosting} ph="Fornitore" />) potrebbe usare cookie tecnici per la sicurezza: <Val v={null} ph="Da verificare con il fornitore ed elencare qui" />.</p>
+          <p>Il sito oggi non imposta nessun cookie, nemmeno tecnico, e non salva dati nel tuo browser. Neanche il fornitore di hosting (<Val v={legal.hosting} ph="Fornitore" />) ne imposta sulle pagine del sito.</p>
         )}
       </>
     ),

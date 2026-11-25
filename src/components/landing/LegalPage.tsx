@@ -2,7 +2,11 @@ import type { ReactNode } from 'react';
 import { Tag, Tree } from '@alpwisestudio/ui';
 import { Scene, Words } from '@/components/motion';
 import { d } from '@/components/motion/delay';
-import { legal } from '@/content/site';
+import { contact, legal } from '@/content/site';
+
+// Finché manca uno dei dati obbligatori le pagine mostrano i segnaposto e l'avviso di bozza.
+// Sede, P.IVA e PEC sono facoltativi: compaiono solo se impostati.
+const isDraft = !(legal.company || legal.owners.length) || [contact.email, legal.retention, legal.updated].some((v) => !v);
 import { SiteFooter } from './SiteFooter';
 import { SiteNav } from './SiteNav';
 
@@ -28,7 +32,7 @@ export function LegalPage({ label, title, lead, sections }: { label: string; tit
                 <p>{lead}</p>
                 <div className="al-legal-meta">
                   <span className="al-kicker">Ultimo aggiornamento <Val v={legal.updated} ph="gg.mm.aaaa" /></span>
-                  <Tag tone="warning" dot>Bozza da far verificare a un consulente</Tag>
+                  {isDraft && <Tag tone="warning" dot>Bozza da far verificare a un consulente</Tag>}
                 </div>
               </div>
             </div>

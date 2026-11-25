@@ -37,3 +37,7 @@ tailwind.config.ts       preset di @alpwisestudio/ui
 ```
 
 Token, classi `al-*`, componenti e font si cambiano nella repo `alpwisestudio/ui` (aggiorna anche `design-system/tokens.json`), si pubblica una nuova versione con Changesets e qui si aggiorna la dipendenza. Il pacchetto è pubblico su npmjs.com: l'installazione non richiede token.
+
+## Privacy e cookie
+
+Le pagine `/privacy` e `/cookie` descrivono quello che il codice fa davvero, con i dati in `legal` di `src/content/site.ts`. Quando aggiungi un servizio esterno (analytics, font remoti, mappe, video, widget, un nuovo fornitore per il form), un cookie o un dato raccolto, aggiorna nella stessa modifica le due pagine e `legal.updated`. Con cookie non tecnici o embed di terzi serve anche un banner di consenso, che deve bloccarli prima della scelta dell'utente.

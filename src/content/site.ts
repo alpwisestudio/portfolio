@@ -35,19 +35,22 @@ export const contact = {
 
 // Dati per Privacy e Cookie. Vanno forniti dallo studio e verificati da un consulente prima della pubblicazione.
 export const legal = {
-  owner: null as string | null,          // ragione sociale o nome del titolare
-  address: null as string | null,        // indirizzo completo della sede
-  pec: null as string | null,
-  hosting: null as string | null,        // fornitore di hosting, es. nome e paese
-  formProcessor: null as string | null,  // servizio che riceve il modulo contatti
-  retention: null as string | null,      // per quanto conservate le richieste di contatto
-  logRetention: null as string | null,   // per quanto il fornitore conserva i log tecnici
-  updated: null as string | null,        // data ultimo aggiornamento, gg.mm.aaaa
+  // Titolari: le persone che gestiscono lo studio, contitolari (art. 26 GDPR) finché non c'è una società. Poi va la ragione sociale in `company`.
+  owners: ['Luca Mimmo', 'Luisa Cerin Ogbeiwi', 'Vladyslav Bukator'] as string[],
+  company: null as string | null,
+  address: null as string | null,        // sede, facoltativa: compare solo se impostata
+  pec: null as string | null,            // facoltativa: compare solo se impostata
+  hosting: 'Vercel Inc., Stati Uniti' as string | null,                         // fornitore di hosting
+  formProcessor: 'Resend (Plus Five Five, Inc.), Stati Uniti' as string | null, // servizio che invia il modulo contatti per email
+  mailbox: 'Google Ireland Limited (Gmail), Irlanda' as string | null,          // casella su cui arrivano le richieste
+  retention: "12 mesi dall'ultimo contatto, poi le cancelliamo" as string | null, // richieste di contatto
+  logRetention: 'il tempo stabilito da Vercel per far funzionare e proteggere il servizio, come indicato nella sua informativa' as string | null, // log tecnici del fornitore
+  updated: '25.11.2026' as string | null, // data ultimo aggiornamento, gg.mm.aaaa
 };
 
 // Parti del sito non ancora pronte per il pubblico. Rimetti `true` quando i contenuti sono reali.
 export const features = {
-  legal: false,       // pagine Privacy e Cookie: servono dati legali verificati
+  legal: true,        // pagine Privacy e Cookie: aggiornale quando cambiano servizi o dati raccolti
   contactForm: true,  // modulo contatti (invia a /api/contact: email via Resend, oppure CONTACT_WEBHOOK_URL)
 };
 
